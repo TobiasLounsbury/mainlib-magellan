@@ -1,0 +1,255 @@
+
+.wpsl-view-select .view-select-button {
+    border: 1px solid #999;
+    background-color: white;
+    height:40px;
+    width:40px;
+    cursor: pointer;
+    font-family: "Font Awesome 5 Free", FontAwesome;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.4em;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: #999;
+}
+
+.library-action-button {
+    display: inline-block;
+    border: 1px solid #999;
+    background-color: white;
+    height:35px;
+    width:35px;
+    cursor: pointer;
+    font-family: "Font Awesome 5 Free", FontAwesome;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.4em;
+    margin: 2px;
+    text-align: center;
+    line-height: 35px;
+    vertical-align: middle;
+
+}
+
+#wpsl-gmap {
+    transition: all .5s ease-in-out;
+}
+#wpsl-wrap.view-list #wpsl-gmap {
+    max-height: 0px;
+}
+
+#wpsl-wrap.view-map .view-select-button.view-map, #wpsl-wrap.view-list .view-select-button.view-list, .library-action-button i {
+    color: #4a90e2;
+}
+
+
+
+.library-service-listing, .library-listing {
+    clear: both;
+    margin-bottom: 5px;
+    background: #fafafa;
+    text-align: left;
+    border: 1px solid #dadada;
+}
+
+.library-service-title, .library-listing-title {
+    background: #eee;
+    border-bottom: 5px solid #30465b;
+    padding: 5px;
+}
+
+.library-details, .library-description {
+    background: #efefef;
+    margin: 5px;
+    clear: both;
+    padding: 5px;
+}
+
+.library-listing-distance {
+    float: right;
+    margin-right: 10px;
+}
+
+.library-details {
+    display: grid;
+    grid: none / auto 35px;
+    box-sizing: border-box;
+}
+
+.library-description.expandable {
+    max-height: 0;
+    margin: 0;
+}
+
+.library-listing.expanded .library-description.expandable {
+    max-height: none;
+    margin: 5px;
+}
+
+.library-listing-more-detail {
+    float: right;
+    display: inline-block;
+    padding-left: 7px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.library-listing-more-detail i, .library-listing-more-detail-i i {
+    pointer-events: none;
+    transition: all .5s ease-in-out;
+    transform: rotate(0deg);
+}
+
+.library-listing.expanded .library-listing-more-detail i {
+    transform: rotate(90deg);
+}
+
+
+.library-service-icon {
+    display: inline-block;
+    font-size: 2.8rem;
+    text-align: center;
+    min-height: 50px;
+    min-width: 50px;
+    margin-right: 10px;
+}
+
+.library-service-icon-title {
+    display: inline;
+    font-size: .85rem;
+    top: 0.25rem;
+    font-style: italic;
+}
+
+.library-service-listing .library-service-icon {
+    color: #000;
+    float: left;
+}
+
+.library-listing-available-services:after,
+.library-listing-available-services:before,
+.library-listing-single-service:before,
+.library-service-icon:before,
+.library-details:before {
+    content: none;
+}
+
+.library-listing-available-services {
+    text-align: center;
+    margin: 7px 0 -1.5rem 0;
+    transition: all .5s ease-in-out;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+
+    grid-gap: 5px;
+    width: 100%;
+    justify-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+}
+
+.library-listing-available-services .library-service-icon {
+    margin: 0 15px;
+}
+.library-listing-available-services .service-available .library-service-icon {
+    margin: 0 -5px 0 10px;
+}
+
+.library-listing-single-service {
+    margin: 0;
+    overflow: visible;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.library-service-usage {
+    clear: both;
+}
+
+.magellan-fa-select,
+.select2-container--magellan li,
+#select2-acf-magellan_service_icon_selector-results,
+.magellan-fa-select-wrapper .select2-selection__rendered {
+    font-family: "Font Awesome 5 Free", FontAwesome, sans;
+    font-size: 1.2em;
+}
+
+.service-available .library-service-icon {
+    color: #000;
+}
+
+.service-available .library-service-icon::after {
+    content: "\f058";
+    color: #009e0f;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free", FontAwesome, sans;
+    position: relative;
+    left: -10px;
+    top: 5px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    width: auto;
+}
+
+#wpsl-wrap #wpsl-result-list li {
+    padding: 0;
+}
+
+.library-listing-thumb {
+    max-height: 0px;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.library-listing.expanded .library-listing-thumb {
+    max-height: 250px;
+}
+
+.wpsl-store-hours.expandable {
+    max-height: 0px;
+    transition: all .5s ease-in-out;
+}
+
+.wpsl-store-hours.expandable table.wpsl-opening-hours {
+    line-height: 0;
+    transition: all .5s ease-in-out;
+    color: transparent;
+}
+.library-listing.expanded .wpsl-store-hours.expandable table.wpsl-opening-hours {
+    line-height: 2em;
+    color: #000;
+}
+
+.library-listing.expanded .wpsl-store-hours.expandable {
+    max-height: 500px;
+}
+
+.expandable {
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+    line-height: 0;
+    padding: 0;
+    color: transparent;
+}
+
+.library-service-listing.expanded .expandable, .library-listing.expanded .expandable {
+    line-height: 1.5;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: black;
+}
+.library-listing.expanded .library-listing-available-services {
+    margin: 7px 0;
+}
+
+.wpsl-contact-details {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.library-service-details {
+    padding-top: 5px;
+}
