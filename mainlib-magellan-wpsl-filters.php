@@ -36,9 +36,6 @@ function mainlib_magellan_wpsl_store_category_args($args) {
   //$args['show_tagcloud'] = true;
   //$args['hierarchical'] = false;
 
-  //Uncomment to enable custom meta-box callback for the wpsl sidebar form
-  //$args['meta_box_cb'] = "mainlib_magellan_custom_meta_box";
-
   $args['labels'] = array(
       'name'              => __( 'Library Services', 'mainlib' ),
       'singular_name'     => __( 'Library Service', 'mainlib' ),

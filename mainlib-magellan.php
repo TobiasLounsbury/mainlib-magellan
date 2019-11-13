@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
-require_once("mainlib-custom-metabox.php");
+
 require_once("mainlib-magellan-shortcodes.php");
 require_once("mainlib-magellan-wpsl-filters.php");
 
