@@ -1,18 +1,27 @@
 <?php mainlib_magellan_acf_admin_enqueue_scripts(); ?>
-<div>
-  <h2>Magellan Settings</h2>
-  <form method="post" action="options.php">
-    <?php settings_fields( 'mainlib_magellan_options_group' ); ?>
-    <table>
-      <tr valign="top">
-        <th scope="row"><label for="mainlib_magellan_locations_path">Path to Locations page</label></th>
-        <td><input type="text" id="mainlib_magellan_locations_path" name="mainlib_magellan_locations_path" value="<?php echo get_option('mainlib_magellan_locations_path'); ?>" /></td>
-      </tr>
-        <tr valign="top">
-            <th scope="row"><label for="mainlib_magellan_default_icon">Default Library Service Icon</label></th>
-            <td><input type="text" id="mainlib_magellan_default_icon" name="mainlib_magellan_default_icon" class="magellan-fa-select" value="<?php echo get_option('mainlib_magellan_default_icon'); ?>" /></td>
-        </tr>
-    </table>
-    <?php  submit_button(); ?>
-  </form>
-</div>
+<form method="post" action="options.php">
+    <div class="postbox-container">
+        <div class="metabox-holder">
+            <div class="postbox">
+                <h3 class="hndle"><span>Magellan Settings</span></h3>
+                <div class="inside">
+                  <?php settings_fields( 'mainlib_magellan_options_group' ); ?>
+                    <p>
+                        <label for="mainlib_magellan_locations_path"><strong>Path to Locations Page:</strong></label>
+                    </p>
+                    <p>
+                        <span><?php echo get_site_url(); ?>/</span><input type="text" id="mainlib_magellan_locations_path" name="mainlib_magellan_locations_path" value="<?php echo get_option('mainlib_magellan_locations_path'); ?>" /><span>/</span>
+                    </p>
+                    <hr>
+                    <p>
+                        <label for="mainlib_magellan_default_icon"><strong>Default Library Service Icon:</strong></label>
+                    </p>
+                    <p>
+                        <input type="text" id="mainlib_magellan_default_icon" name="mainlib_magellan_default_icon" class="magellan-fa-select" value="<?php echo get_option('mainlib_magellan_default_icon'); ?>" />
+                    </p>
+                  <?php  submit_button(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
