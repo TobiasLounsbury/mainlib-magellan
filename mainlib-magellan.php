@@ -55,7 +55,6 @@ add_action( 'add_meta_boxes', "mainlib_magellan_alter_metaboxes", 99);
 
 //Shortcode for listing all the library services
 add_shortcode( 'list-library-services', 'mainlib_magellan_list_library_services_shortcode');
-add_shortcode( 'magellan', 'mainlib_magellan_magellan_shortcode');
 
 //ACF Hooks
 add_action('acf/init', 'mainlib_magellan_acf_add_local_field_groups');
