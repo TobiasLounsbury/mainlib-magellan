@@ -277,3 +277,8 @@ text-align: center;
     content: none;
     display:none;
 }
+
+/*Used to hide the Parent select box in the sidebar metabox*/
+#newwpsl_store_category_parent {
+display: none;
+}
