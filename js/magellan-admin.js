@@ -58,10 +58,13 @@ faIconList['brands'] = {"prefix": "fab", "title": "Brand Logos", "icons": {"500p
     };
 
 
-    //When the field is rebuild after ajax submit re-enable select2
-    acf.addAction('new_field/name=service_icon', function(field) {
-      makeFASelect2("#acf-magellan_service_icon");
-    });
+    //Acf is not present on the Magellan settings page.
+    if(window.acf && window.acf.addAction) {
+      //When the field is rebuild after ajax submit re-enable select2
+      acf.addAction('new_field/name=service_icon', function (field) {
+        makeFASelect2("#acf-magellan_service_icon");
+      });
+    }
 
 
     //turn the service_icon field into a select 2
