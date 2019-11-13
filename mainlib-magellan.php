@@ -49,7 +49,9 @@ add_filter( 'wpsl_thumb_size', 'mainlib_magellan_wpsl_thumb_size' );
 add_filter( 'wpsl_thumb_attr', 'mainlib_magellan_wpsl_thumb_attr' );
 
 add_filter( 'wpsl_store_meta', 'mainlib_magellan_wpsl_custom_store_meta', 10, 2 );
+add_filter( 'wpsl_post_type_labels', 'mainlib_magellan_wpsl_post_type_labels');
 
+add_action( 'add_meta_boxes', "mainlib_magellan_alter_metaboxes", 99);
 
 //Shortcode for listing all the library services
 add_shortcode( 'list-library-services', 'mainlib_magellan_list_library_services_shortcode');
@@ -58,10 +60,20 @@ add_shortcode( 'magellan', 'mainlib_magellan_magellan_shortcode');
 //ACF Hooks
 add_action('acf/init', 'mainlib_magellan_acf_add_local_field_groups');
 add_action( 'acf/input/admin_enqueue_scripts', 'mainlib_magellan_acf_admin_enqueue_scripts' );
+add_action( 'admin_menu', 'mainlib_magellan_change_sort_menu_label', 110);
 
 //Settings hooks
 add_action( 'admin_init', 'mainlib_magellan_register_settings' );
 add_action('admin_menu', 'mainlib_magellan_register_options_page');
+
+//Hook to alter term order on creation
+add_action('wp_insert_term_data', 'mainlib_magellan_add_service', 10, 3);
+
+//Hooks for adding custom column to library services taxonomy listing admin form
+add_filter("manage_edit-wpsl_store_category_columns", 'mainlib_magellan_add_order_column');
+add_filter("manage_edit-wpsl_store_category_sortable_columns", 'mainlib_magellan_add_order_sortable_column');
+add_filter("manage_wpsl_store_category_custom_column", 'mainlib_magellan_add_order_data_to_column', 10, 3);
+
 
 /**
  * Take actions on plugin activation
@@ -78,7 +90,6 @@ function mainlib_magellan_activate() {
  * Creates the custom taxonomy fields for library services
  */
 function mainlib_magellan_acf_add_local_field_groups() {
-  require_once("magellan-install.php");
   mainlib_magellan_create_library_services_taxonomy_field_group();
 }
 
@@ -168,6 +179,8 @@ function mainlib_magellan_register_options_page() {
 function mainlib_magellan_register_settings() {
   add_option( 'mainlib_magellan_locations_path', 'locations');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_locations_path');
+  add_option( 'mainlib_magellan_default_icon', 'fas fa-concierge-bell');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
 }
 
 
@@ -177,3 +190,175 @@ function mainlib_magellan_register_settings() {
 function mainlib_magellan_options_page() {
   include(__DIR__."/templates/settings.php");
 }
+
+/**
+ * Used to alter the Metaboxes on the wpsl edit screen to say library instead of store
+ *
+ * Also used to remove the jquery/javascript box
+ *
+ */
+function mainlib_magellan_alter_metaboxes() {
+  global $wp_meta_boxes;
+
+  if(array_key_exists("wpsl_stores", $wp_meta_boxes)) {
+    try {
+      //Remove the jQuery Javascript stuff - It isn't needed for store locations
+      unset($wp_meta_boxes['wpsl_stores']['normal']['default']['WCP_script']);
+
+      //Change the Metabox Titles
+      $wp_meta_boxes['wpsl_stores']['normal']['high']['wpsl-store-details']['title'] = "Library Details";
+      $wp_meta_boxes['wpsl_stores']['side']['default']['wpsl-map-preview']['title'] = "Library Map";
+    } catch (Exception $exception) {
+      //Don't care, just don't want an error thrown.
+    }
+  }
+}
+
+/**
+ * Creates a new custom field group programatically
+ * that is used for storing additional metadata within the
+ * library services taxonomy
+ *
+ */
+function mainlib_magellan_create_library_services_taxonomy_field_group() {
+  if( function_exists('acf_add_local_field_group') ):
+
+    acf_add_local_field_group(array(
+        'key' => 'magellan_library_service_custom_fields',
+        'title' => 'Library Services: Additional Metadata',
+        'fields' => array(
+            array(
+                'key' => 'magellan_service_icon',
+                'label' => 'Service Icon',
+                'name' => 'service_icon',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'service_icon_selector',
+                    'id' => '',
+                ),
+                'default_value' => 'fas fa-concierge-bell',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'magellan_default_service',
+                'label' => 'Default Service',
+                'name' => 'default_service',
+                'type' => 'true_false',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'taxonomy',
+                    'operator' => '==',
+                    'value' => 'wpsl_store_category',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+    ));
+
+  endif;
+}
+
+
+/**
+ * Change the Admin menu title for re-ordering
+ * the Library Services Taxonomy
+ */
+function mainlib_magellan_change_sort_menu_label() {
+  global $submenu;
+
+  if(array_key_exists("edit.php?post_type=wpsl_stores", $submenu)) {
+    foreach($submenu['edit.php?post_type=wpsl_stores'] as &$m) {
+      if($m[1] == "manage_options") {
+        $m[0] = "Reorder Library Services";
+      }
+    }
+  }
+
+}
+
+
+/**
+ * Alter the term_order of newly created terms so that no defined
+ * order results in the bottom of the list.
+ *
+ * @param $data
+ * @param $taxonomy
+ * @param $args
+ * @return mixed
+ */
+function mainlib_magellan_add_service($data, $taxonomy, $args) {
+  if($taxonomy == "wpsl_store_category" && !array_key_exists("term_order", $data) && $args['parent'] == 0) {
+    $data['term_order'] = wp_count_terms( $taxonomy, array('hide_empty'=> false, 'parent'    => 0));
+  }
+  return $data;
+}
+
+
+/**
+ * Add a new "Display Order" column to the admin listing for library services
+ *
+ * @param $columns
+ * @return mixed
+ */
+function mainlib_magellan_add_order_column($columns) {
+  $columns['term_order'] = "Display Order";
+  return $columns;
+}
+
+
+/**
+ * Make the Display Order /term_order column sortable
+ * and tell WP to use the term_order key when sorting
+ *
+ * @param $columns
+ * @return mixed
+ */
+function mainlib_magellan_add_order_sortable_column($columns) {
+  $columns['term_order'] = "term_order";
+  return $columns;
+}
+
+/**
+ * Output the Display Order (term_order) to our admincolumn
+ *
+ * @param $s - Empty String
+ * @param $column - Column Name
+ * @param $term_id - Term Id
+ */
+function mainlib_magellan_add_order_data_to_column($s, $column, $term_id) {
+  if ($column == 'term_order') {
+    $term = get_term($term_id, "wpsl_store_category");
+    echo $term->term_order;
+  }
+}
+

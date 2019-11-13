@@ -32,18 +32,29 @@
 
 }
 
+.wpsl-search, .wpsl-gmap-canvas {
+    border: 1px solid #dadada;
+}
+
 #wpsl-gmap {
     transition: all .5s ease-in-out;
 }
 #wpsl-wrap.view-list #wpsl-gmap {
     max-height: 0px;
+    max-width: 0px;
 }
 
 #wpsl-wrap.view-map .view-select-button.view-map, #wpsl-wrap.view-list .view-select-button.view-list, .library-action-button i {
     color: #4a90e2;
 }
 
-
+#wpsl-result-list {
+    transition: all .5s ease-in-out;
+}
+#wpsl-wrap.view-list #wpsl-result-list {
+    margin-right: 0;
+    width: 100%;
+}
 
 .library-service-listing, .library-listing {
     clear: both;
@@ -73,53 +84,41 @@
 
 .library-details {
     display: grid;
-    grid: none / auto 35px;
-    box-sizing: border-box;
-}
-
-.library-description.expandable {
-    max-height: 0;
-    margin: 0;
-}
-
-.library-listing.expanded .library-description.expandable {
-    max-height: none;
-    margin: 5px;
+grid: none / auto 35px;
+box-sizing: border-box;
 }
 
 .library-listing-more-detail {
-    float: right;
-    display: inline-block;
-    padding-left: 7px;
-    padding-right: 5px;
-    cursor: pointer;
+float: right;
+display: inline-block;
+padding-left: 7px;
+padding-right: 5px;
+cursor: pointer;
 }
 
 .library-listing-more-detail i, .library-listing-more-detail-i i {
-    pointer-events: none;
-    transition: all .5s ease-in-out;
-    transform: rotate(0deg);
+pointer-events: none;
+transition: all .5s ease-in-out;
+transform: rotate(0deg);
 }
 
 .library-listing.expanded .library-listing-more-detail i {
-    transform: rotate(90deg);
+transform: rotate(90deg);
 }
 
-
 .library-service-icon {
-    display: inline-block;
-    font-size: 2.8rem;
-    text-align: center;
-    min-height: 50px;
-    min-width: 50px;
-    margin-right: 10px;
+text-align: center;
+}
+
+.library-service-icon-title-svg-text {
+    font: italic 15px sans-serif;
+    dominant-baseline: middle;
+    text-anchor: middle;
+    fill: black;
 }
 
 .library-service-icon-title {
-    display: inline;
-    font-size: .85rem;
-    top: 0.25rem;
-    font-style: italic;
+   width: 100%;
 }
 
 .library-service-listing .library-service-icon {
@@ -127,47 +126,81 @@
     float: left;
 }
 
-.library-listing-available-services:after,
-.library-listing-available-services:before,
-.library-listing-single-service:before,
-.library-service-icon:before,
-.library-details:before {
-    content: none;
+.library-service-icon-svg-text {
+    font-family: "Font Awesome 5 Free", FontAwesome, sans;
+     font-size: 40px;
+     dominant-baseline: middle;
+     text-anchor: middle;
+     fill: grey;
+ }
+.service-available .library-service-icon-svg-text {
+    fill: black;
+}
+
+.library-service-icon-svg-available {
+    font-family: "Font Awesome 5 Free", FontAwesome, sans;
+    font-weight: 900;
+    font-size: 15px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+    fill: none;
+}
+.service-available .library-service-icon-svg-available {
+    fill: #009e0f;
+}
+.library-service-icon-svg-available-background {
+    fill: none;
+}
+.service-available .library-service-icon-svg-available-background {
+    fill: white;
+}
+
+.main-fas {
+    font-weight: 900;
+}
+.main-far {
+    font-weight: 400;
+}
+.main-fab {
+    font-family: "Font Awesome 5 Brands";
 }
 
 .library-listing-available-services {
     text-align: center;
-    margin: 7px 0 -1.5rem 0;
+    margin: 7px 0 0 0;
     transition: all .5s ease-in-out;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-
-    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, 55px);
+    //grid-template-columns: repeat(5, 20%);
+    grid-gap: 10px;
     width: 100%;
     justify-items: center;
     justify-content: space-evenly;
     box-sizing: border-box;
+    overflow: hidden;
+    max-height: 52px;
 }
 
-.library-listing-available-services .library-service-icon {
-    margin: 0 15px;
-}
-.library-listing-available-services .service-available .library-service-icon {
-    margin: 0 -5px 0 10px;
+.library-listing.expanded .library-listing-available-services {
+    max-height: 520px;
 }
 
 .library-listing-single-service {
-    margin: 0;
-    overflow: visible;
-    white-space: nowrap;
+    margin: 0 0 -10px 0;
     width: 100%;
+}
+
+.ibrary-listing-single-service:nth-child(n+6) {
+    display: none;
 }
 
 .library-service-usage {
     clear: both;
+    padding: 0 5px;
 }
 
 .magellan-fa-select,
+#magellan-fa-select-dropdown-target,
 .select2-container--magellan li,
 #select2-acf-magellan_service_icon_selector-results,
 .magellan-fa-select-wrapper .select2-selection__rendered {
@@ -179,7 +212,7 @@
     color: #000;
 }
 
-.service-available .library-service-icon::after {
+.service-available .library-service-icon::afte {
     content: "\f058";
     color: #009e0f;
     font-size: 1.5rem;
@@ -198,33 +231,8 @@
     padding: 0;
 }
 
-.library-listing-thumb {
-    max-height: 0px;
-    overflow: hidden;
-    transition: all .5s ease-in-out;
-}
-
-.library-listing.expanded .library-listing-thumb {
-    max-height: 250px;
-}
-
-.wpsl-store-hours.expandable {
-    max-height: 0px;
-    transition: all .5s ease-in-out;
-}
-
-.wpsl-store-hours.expandable table.wpsl-opening-hours {
-    line-height: 0;
-    transition: all .5s ease-in-out;
-    color: transparent;
-}
-.library-listing.expanded .wpsl-store-hours.expandable table.wpsl-opening-hours {
-    line-height: 2em;
-    color: #000;
-}
-
-.library-listing.expanded .wpsl-store-hours.expandable {
-    max-height: 500px;
+.expandable-js {
+    display: none;
 }
 
 .expandable {
@@ -241,9 +249,7 @@
     padding-bottom: 1em;
     color: black;
 }
-.library-listing.expanded .library-listing-available-services {
-    margin: 7px 0;
-}
+
 
 .wpsl-contact-details {
     white-space: normal;
@@ -251,5 +257,17 @@
 }
 
 .library-service-details {
-    padding-top: 5px;
+    padding: 5px;
+}
+
+.library-listing-available-services:after,
+.library-listing-available-services:before,
+.library-listing-single-service:before,
+.library-service-icon:before,
+.library-details:before,
+.library-service-icon-title:before,
+.library-service-icon-title:after,
+.library-service-icon-title-svg:after,
+.library-service-icon-svg:after {
+    content: none;
 }

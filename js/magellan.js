@@ -23,7 +23,13 @@
 
   $("#page").click(function(event) {
     if ($(event.target).hasClass("library-listing-more-detail") || $(event.target).hasClass("library-listing-more-detail-i")) {
-      $(event.target).closest(".library-listing").toggleClass("expanded");
+      let parent = $(event.target).closest(".library-listing");
+      parent.toggleClass("expanded");
+      if(parent.hasClass("expanded")) {
+        parent.find(".expandable-js, .ibrary-listing-single-service:nth-child(n+6)").slideDown();
+      } else {
+        parent.find(".expandable-js, .ibrary-listing-single-service:nth-child(n+6)").slideUp();
+      }
     }
   });
 

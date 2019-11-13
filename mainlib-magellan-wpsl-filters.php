@@ -10,6 +10,7 @@
  * @return mixed
  */
 function mainlib_magellan_wpsl_custom_meta_box_fields($meta) {
+
   //This is used to add new metadata to all library(store) locations
   //Saving of metadata is handled automagically by store locator.
   //$meta['Field Group Title'] = array('unique_field_key' => array("label" => "Title for the field"));
@@ -158,3 +159,35 @@ function mainlib_magellan_wpsl_thumb_attr($attr) {
   $attr['class'] = "library-listing-image";
   return $attr;
 }
+
+
+/**
+ * Alter the Store-Locator post type metadata to refer to locations
+ * as Libraries rather than stores
+ *
+ * @param $labels
+ * @return mixed
+ */
+function mainlib_magellan_wpsl_post_type_labels($labels) {
+
+  $labels['name'] = 'Magellan';
+
+  $labels['add_new'] = 'New Library';
+  $labels['add_new_item'] = 'Add New Library';
+  $labels['all_items'] = 'All Libraries';
+  $labels['edit_item'] = 'Edit Library';
+  $labels['new_item'] = 'New Library';
+  $labels['not_found'] = 'No Libraries Found';
+  $labels['not_found_in_trash'] = 'No Libraries found in trash';
+  $labels['search_items'] = 'Search Libraries';
+  $labels['singular_name'] = 'Library';
+  $labels['view_item'] = 'View Libraries';
+
+  return $labels;
+}
+
+
+
+
+
+
