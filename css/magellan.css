@@ -257,7 +257,7 @@ text-align: center;
 }
 
 .library-service-details {
-    padding: 10px 0;
+    padding: 10px 0 10px 10px;
     display: grid;
     grid-template-columns: 110px auto;
 }
