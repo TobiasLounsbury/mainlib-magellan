@@ -123,7 +123,7 @@ text-align: center;
 
 .library-service-listing .library-service-icon {
     color: #000;
-    float: left;
+    font-size: 5rem;
 }
 
 .library-service-icon-svg-text {
@@ -194,7 +194,7 @@ text-align: center;
     display: none;
 }
 
-.library-service-usage {
+.ibrary-service-usage {
     clear: both;
     padding: 0 5px;
 }
@@ -257,7 +257,9 @@ text-align: center;
 }
 
 .library-service-details {
-    padding: 5px;
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: 110px auto;
 }
 
 .library-listing-available-services:after,
@@ -268,6 +270,10 @@ text-align: center;
 .library-service-icon-title:before,
 .library-service-icon-title:after,
 .library-service-icon-title-svg:after,
+.library-service-details:before,
+.mainlib-no-after:after,
+.mainlib-no-before:before,
 .library-service-icon-svg:after {
     content: none;
+    display:none;
 }
