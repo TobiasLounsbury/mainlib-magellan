@@ -32,6 +32,11 @@
 
 }
 
+.wpsl-search {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
 .wpsl-search, .wpsl-gmap-canvas {
     border: 1px solid #dadada;
 }
@@ -58,7 +63,7 @@
 
 .library-service-listing, .library-listing {
     clear: both;
-    margin-bottom: 5px;
+    margin-bottom: 16px;
     background: #fafafa;
     text-align: left;
     border: 1px solid #dadada;
