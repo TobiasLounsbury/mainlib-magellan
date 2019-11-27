@@ -74,12 +74,16 @@ function mainlib_magellan_set_wpsl_default_settings() {
   //Make Changes
   $settings['template_id'] = "mainlib";
   $settings['category_label'] = "Library Services";
-  //$settings['permalink_slug'] = "libraries";
-  //$settings['category_slug'] = "services";
+  $settings['radius_label'] = "Search Radius";
   $settings['permalinks'] = 1;
   $settings['category_filter'] = 1;
   $settings['direction_redirect'] = 1;
   $settings['search_radius'] = '5,[10],20,30';
+
+  //These can't be changed here because the way we are saving
+  // doesn't trigger the cascading update to the related urls
+  //$settings['permalink_slug'] = "libraries";
+  //$settings['category_slug'] = "services";
 
   //Save settings
   //Don't use update_option because the built in sanitization
