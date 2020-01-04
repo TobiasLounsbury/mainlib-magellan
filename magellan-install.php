@@ -37,7 +37,7 @@ function mainlib_magellan_add_default_services() {
   $services = array(
       array("title" => "Printing", "slug" => "printing", "default" => true, "order" => 1, "icon" => "fas fa-print", "description" => "Traditional 8.5×11 document to color photo printing"),
       array("title" => "Scanning", "slug" => "scanning", "default" => true, "order" => 4, "icon" => "fas fa-file-pdf", "description" => "Providing patrons with the ability to scan documents"),
-      array("title" => "Internet", "slug" => "internet", "default" => true, "order" => 3, "icon" => "fas fa-wifi", "description" => "Free high speed wifi access to the world wide web"),
+      array("title" => "WiFi", "slug" => "wifi", "default" => true, "order" => 3, "icon" => "fas fa-wifi", "description" => "Free high speed wifi access to the world wide web"),
       array("title" => "Faxing",   "slug" => "faxing",   "default" => true, "order" => 2, "icon" => "fas fa-fax", "description" => "Sending documents to phone numbers, the old way")
   );
 
