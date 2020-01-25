@@ -62,7 +62,7 @@ add_action( 'acf/input/admin_enqueue_scripts', 'mainlib_magellan_acf_admin_enque
 add_action( 'admin_menu', 'mainlib_magellan_change_sort_menu_label', 110);
 
 //Settings hooks
-add_action( 'admin_init', 'mainlib_magellan_register_settings' );
+add_action( 'admin_init', 'mainlib_magellan_hook_admin_init' );
 add_action('admin_menu', 'mainlib_magellan_register_options_page');
 
 //Hook to alter term order on creation
@@ -78,7 +78,7 @@ add_filter("manage_wpsl_store_category_custom_column", 'mainlib_magellan_add_ord
  * Take actions on plugin activation
  */
 function mainlib_magellan_activate() {
-  require_once("magellan-install.php");
+  require_once("mainlib-magellan-install.php");
   mainlib_magellan_add_custom_pages();
   mainlib_magellan_create_library_services_taxonomy_field_group();
   mainlib_magellan_add_default_services();
@@ -171,15 +171,29 @@ function mainlib_magellan_register_options_page() {
   add_options_page('Magellan Settings', 'Magellan', 'manage_options', 'mainlib_mainlib', 'mainlib_magellan_options_page');
 }
 
+
 /**
- * Define the fields that are going to be rendered on the
+ * Handles the Admin init hook
+ *
+ * Used to define the fields that are going to be rendered on the
  * settings page.
+ *
+ * And as a start hook for the export functionality
+ *
  */
-function mainlib_magellan_register_settings() {
+function mainlib_magellan_hook_admin_init() {
+  //Register fields for Settings page
   add_option( 'mainlib_magellan_locations_path', 'locations');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_locations_path');
+
   add_option( 'mainlib_magellan_default_icon', 'fas fa-concierge-bell');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
+
+  //Handle Closed Data Export
+  if ( array_key_exists( 'action', $_REQUEST ) && $_REQUEST['action'] == 'magellan_export') {
+    require_once("mainlib-magellan-export.php");
+    mainlib_magellan_export_closed_data();
+  }
 }
 
 
