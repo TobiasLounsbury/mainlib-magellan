@@ -184,6 +184,30 @@ function mainlib_magellan_wpsl_post_type_labels($labels) {
 }
 
 
+/**
+ * @param $items
+ * @return mixed
+ */
+function mainlib_magellan_wpsl_sub_menu_items($items) {
+
+  $items[] = array(
+    "caps" => "manage_wpsl_settings",
+    "function" => "mainlib_magellan_render_export_page",
+    "menu_slug" => "mainlib_export",
+    "menu_title" => "Closed Dates Export",
+    "page_title" => "MAIN Library Closed Dates Export",
+  );
+
+  $items[] = array(
+      "caps" => "manage_wpsl_settings",
+      "function" => "mainlib_magellan_render_settings_page",
+      "menu_slug" => "mainlib_settings",
+      "menu_title" => "Magellan Custom Settings",
+      "page_title" => "Magellan Settings",
+  );
+
+  return $items;
+}
 
 
 

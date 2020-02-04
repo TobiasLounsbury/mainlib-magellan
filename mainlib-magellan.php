@@ -32,12 +32,14 @@ require_once("mainlib-magellan-wpsl-filters.php");
 //Define the current version number
 define( 'MAINLIB_MAGELLAN_VERSION', '1.0.0' );
 
+//Plugin Activation Hook
 register_activation_hook( __FILE__, 'mainlib_magellan_activate' );
 
 //Add some Filter Hooks
 add_filter( 'do_shortcode_tag', 'mainlib_magellan_shortcode_injection', 10, 4);
 add_filter('template_include', 'mainlib_magellan_set_template');
 
+//Store Locator Hooks
 add_filter( 'wpsl_store_category_args', 'mainlib_magellan_wpsl_store_category_args');
 add_filter( 'wpsl_meta_box_fields', 'mainlib_magellan_wpsl_custom_meta_box_fields' );
 add_filter( 'wpsl_templates', 'mainlib_magellan_wpsl_custom_templates' );
@@ -47,10 +49,12 @@ add_filter( 'wpsl_store_header_template', 'mainlib_magellan_wpsl_custom_store_he
 add_filter( 'wpsl_cpt_info_window_template', 'mainlib_magellan_wpsl_custom_cpt_info_window_template' );
 add_filter( 'wpsl_thumb_size', 'mainlib_magellan_wpsl_thumb_size' );
 add_filter( 'wpsl_thumb_attr', 'mainlib_magellan_wpsl_thumb_attr' );
-
 add_filter( 'wpsl_store_meta', 'mainlib_magellan_wpsl_custom_store_meta', 10, 2 );
 add_filter( 'wpsl_post_type_labels', 'mainlib_magellan_wpsl_post_type_labels');
+add_filter( 'wpsl_sub_menu_items', 'mainlib_magellan_wpsl_sub_menu_items');
 
+
+//
 add_action( 'add_meta_boxes', "mainlib_magellan_alter_metaboxes", 99);
 
 //Shortcode for listing all the library services
@@ -59,11 +63,12 @@ add_shortcode( 'list-library-services', 'mainlib_magellan_list_library_services_
 //ACF Hooks
 add_action('acf/init', 'mainlib_magellan_acf_add_local_field_groups');
 add_action( 'acf/input/admin_enqueue_scripts', 'mainlib_magellan_acf_admin_enqueue_scripts' );
-add_action( 'admin_menu', 'mainlib_magellan_change_sort_menu_label', 110);
+
 
 //Settings hooks
 add_action( 'admin_init', 'mainlib_magellan_hook_admin_init' );
-add_action('admin_menu', 'mainlib_magellan_register_options_page');
+add_action( 'admin_menu', 'mainlib_magellan_hook_admin_menu', 110);
+
 
 //Hook to alter term order on creation
 add_action('wp_insert_term_data', 'mainlib_magellan_add_service', 10, 3);
@@ -164,15 +169,6 @@ function mainlib_magellan_acf_admin_enqueue_scripts() {
 
 
 /**
- * Register the link to the settings page to the settings
- * sub-menu in the admin system
- */
-function mainlib_magellan_register_options_page() {
-  add_options_page('Magellan Settings', 'Magellan', 'manage_options', 'mainlib_mainlib', 'mainlib_magellan_options_page');
-}
-
-
-/**
  * Handles the Admin init hook
  *
  * Used to define the fields that are going to be rendered on the
@@ -200,9 +196,18 @@ function mainlib_magellan_hook_admin_init() {
 /**
  * Render the settings page.
  */
-function mainlib_magellan_options_page() {
-  include(__DIR__."/templates/settings.php");
+function mainlib_magellan_render_settings_page() {
+  include(__DIR__."/templates/settings-page.php");
 }
+
+/**
+ * Render the Closures Export page.
+ */
+function mainlib_magellan_render_export_page() {
+  include(__DIR__."/templates/export-page.php");
+}
+
+
 
 /**
  * Used to alter the Metaboxes on the wpsl edit screen to say library instead of store
@@ -253,7 +258,7 @@ function mainlib_magellan_create_library_services_taxonomy_field_group() {
                     'class' => 'service_icon_selector',
                     'id' => '',
                 ),
-                'default_value' => 'fas fa-concierge-bell',
+                'default_value' => get_option('mainlib_magellan_default_icon', 'fas fa-concierge-bell'),
                 'placeholder' => '',
                 'prepend' => '',
                 'append' => '',
@@ -305,9 +310,16 @@ function mainlib_magellan_create_library_services_taxonomy_field_group() {
 /**
  * Change the Admin menu title for re-ordering
  * the Library Services Taxonomy
+ *
+ * Register the link to the settings page to the settings
+ * sub-menu in the admin system
+ *
  */
-function mainlib_magellan_change_sort_menu_label() {
+function mainlib_magellan_hook_admin_menu() {
   global $submenu;
+
+
+
 
   if(array_key_exists("edit.php?post_type=wpsl_stores", $submenu)) {
     foreach($submenu['edit.php?post_type=wpsl_stores'] as &$m) {
