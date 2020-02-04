@@ -33,4 +33,7 @@
     }
   });
 
+  //This moves the List of services down below the map and above the title
+  $(".wpsl-locations-details").before( $(".post-item-single .library-services") );
+
 })(jQuery);

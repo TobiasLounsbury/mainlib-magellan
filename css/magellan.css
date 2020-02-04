@@ -183,11 +183,15 @@ text-align: center;
     justify-content: space-evenly;
     box-sizing: border-box;
     overflow: hidden;
-    max-height: 52px;
+    max-height: 70px;
 }
 
 .library-listing.expanded .library-listing-available-services {
-    max-height: 520px;
+    max-height: 280px;
+}
+
+.library-services.library-listing-available-services {
+    max-height: 280px;
 }
 
 .library-listing-single-service {

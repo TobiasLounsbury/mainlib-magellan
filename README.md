@@ -34,7 +34,7 @@ These actions are automatically taken when the Magellan plugin is activated.
 ```
 Title:      'All Library Services'
 Url:        /library-services/
-Content:    '[list-library-services]'
+Content:    '[all-library-services]'
 ```
 * A Custom Field Group is created for the Library Services Taxonomy with the following fields
    * `service_icon` - Used to select which icon represents each Library Service
@@ -69,7 +69,13 @@ __Default Library Services Icon__ - Library Employees have permission to create 
 
 
 ## Shortcodes
-__[list-library-services]__ - Renders a list of all the library services with their descriptions, icons, and links to the locations page with the service filter set.
+__[all-library-services]__ - Renders a list of all the library services with their descriptions, icons, and links to the locations page with the service filter set.
+
+__[library-services]__ - Renders a list of the library services available at a single location. 
+
+Optional params: __id__
+
+__Example:__ `[library-service id="257"]`
 
 
 ## Usage

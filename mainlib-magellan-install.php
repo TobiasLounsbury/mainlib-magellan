@@ -18,7 +18,7 @@ function mainlib_magellan_add_custom_pages() {
     $servicesPage = array(
         'post_title' => __('All Library Services', 'mainlib'),
         'post_name' => 'library-services',
-        'post_content' => '[list-library-services]',
+        'post_content' => '[all-library-services]',
         'post_status' => 'publish',
         'post_author' => 1,
         'post_type' => 'page',

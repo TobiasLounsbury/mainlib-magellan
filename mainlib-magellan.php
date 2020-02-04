@@ -28,6 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 require_once("mainlib-magellan-shortcodes.php");
 require_once("mainlib-magellan-wpsl-filters.php");
+require_once("mainlib-magellan-utils.php");
 
 //Define the current version number
 define( 'MAINLIB_MAGELLAN_VERSION', '1.0.0' );
@@ -58,7 +59,8 @@ add_filter( 'wpsl_sub_menu_items', 'mainlib_magellan_wpsl_sub_menu_items');
 add_action( 'add_meta_boxes', "mainlib_magellan_alter_metaboxes", 99);
 
 //Shortcode for listing all the library services
-add_shortcode( 'list-library-services', 'mainlib_magellan_list_library_services_shortcode');
+add_shortcode( 'all-library-services', 'mainlib_magellan_all_library_services_shortcode');
+add_shortcode( 'library-services', 'mainlib_magellan_library_services_shortcode');
 
 //ACF Hooks
 add_action('acf/init', 'mainlib_magellan_acf_add_local_field_groups');
@@ -77,6 +79,10 @@ add_action('wp_insert_term_data', 'mainlib_magellan_add_service', 10, 3);
 add_filter("manage_edit-wpsl_store_category_columns", 'mainlib_magellan_add_order_column');
 add_filter("manage_edit-wpsl_store_category_sortable_columns", 'mainlib_magellan_add_order_sortable_column');
 add_filter("manage_wpsl_store_category_custom_column", 'mainlib_magellan_add_order_data_to_column', 10, 3);
+
+
+//Hook that lets me hook in and add the library services to the content stream
+add_filter("the_content", 'mainlib_magellan_add_services_to_post_content');
 
 
 /**
@@ -164,7 +170,7 @@ function mainlib_magellan_acf_admin_enqueue_scripts() {
   wp_enqueue_script('select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js', array('jquery') );
 
   wp_enqueue_style("magellan", plugin_dir_url(__FILE__)."css/magellan.css");
-  wp_enqueue_script("magellan", plugin_dir_url(__FILE__)."js/magellan-admin.js", array('jquery', 'select2'));
+  wp_enqueue_script("magellan-admin", plugin_dir_url(__FILE__)."js/magellan-admin.js", array('jquery', 'select2'));
 }
 
 
@@ -387,3 +393,27 @@ function mainlib_magellan_add_order_data_to_column($s, $column, $term_id) {
   }
 }
 
+
+/**
+ * Adds the [library-services] shortcode to the content stream
+ * for the store-locator post type.
+ *
+ * @param $content
+ * @return string
+ */
+function mainlib_magellan_add_services_to_post_content( $content ) {
+  global $wpsl_settings, $post;
+
+  if ( isset( $post->post_type ) && $post->post_type == 'wpsl_stores' && is_single() && in_the_loop() ) {
+
+    //todo: Load and javascript we might need.
+    $pos = strpos($content, '<div class="wpsl-locations-details">');
+    if($pos) {
+      $content = substr($content, 0, $pos). "[library-services]\n". substr($content, $pos);
+    } else {
+      $content =  "[library-services]". $content;
+    }
+  }
+
+  return $content;
+}
