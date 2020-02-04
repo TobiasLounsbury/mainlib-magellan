@@ -40,11 +40,11 @@ function mainlib_magellan_export_closed_data() {
       //Get the day of the week
       $dow = date("w", $date);
       //Check to see if this location is usually open on this day of the week.
-      $closed = empty($hours[$dow]);
+      $closed = empty($hours[$dow]['periods']);
 
       //Check if we have a custom entry for this date
-      if(array_key_exists(date("m/d", $date), $hours)) {
-        $closed = empty($hours[date("m/d", $date)]);
+      if(array_key_exists(date("Y-m-d", $date), $hours)) {
+        $closed = empty($hours[date("Y-m-d", $date)]['periods']);
       }
 
       //If the location is closed, log the date for inclusion in the csv
