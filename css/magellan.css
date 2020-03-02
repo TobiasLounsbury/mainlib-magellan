@@ -221,21 +221,6 @@ text-align: center;
     color: #000;
 }
 
-.service-available .library-service-icon::afte {
-    content: "\f058";
-    color: #009e0f;
-    font-size: 1.5rem;
-    font-weight: 900;
-    font-family: "Font Awesome 5 Free", FontAwesome, sans;
-    position: relative;
-    left: -10px;
-    top: 5px;
-    background: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    width: auto;
-}
-
 #wpsl-wrap #wpsl-result-list li {
     padding: 0;
 }
@@ -271,6 +256,19 @@ text-align: center;
     grid-template-columns: 110px auto;
 }
 
+.hidden-accessible {
+    border: 0!important;
+    clip: rect(0 0 0 0)!important;
+    -webkit-clip-path: inset(50%)!important;
+    clip-path: inset(50%)!important;
+    height: 1px!important;
+    overflow: hidden!important;
+    padding: 0!important;
+    position: absolute!important;
+    width: 1px!important;
+    white-space: nowrap!important;
+}
+
 .library-listing-available-services:after,
 .library-listing-available-services:before,
 .library-listing-single-service:before,
@@ -290,4 +288,57 @@ text-align: center;
 /*Used to hide the Parent select box in the sidebar metabox*/
 #newwpsl_store_category_parent {
 display: none;
+}
+
+#wpsl-search-wrap .select2.select2-container {
+    display: inline-block!important;
+}
+
+#wpsl-search-wrap-magellan {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+#wpsl-search-wrap-magellan::before {
+    content: none;
+}
+
+#wpsl-search-input, .magellan-input-group .magellan-input {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+#wpsl-search-input.magellan-input {
+    width: 100% !important;
+}
+
+#wpsl-search-wrap-magellan label {
+    display: block;
+    white-space: nowrap;
+    padding-left: 1px;
+}
+
+.c1 {
+    grid-column: span 1;
+}
+.c2 {
+    grid-column: span 2;
+}
+.c3 {
+    grid-column: span 3;
+}
+.c4 {
+    grid-column: span 4;
+}
+
+@media (max-width: 825px) {
+    #wpsl-search-wrap-magellan {
+        grid-template-columns: 24% 24% 24% 24%;
+    }
+}
+
+@media (max-width: 570px) {
+    #wpsl-search-wrap-magellan {
+        grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    }
 }

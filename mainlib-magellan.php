@@ -53,6 +53,14 @@ add_filter( 'wpsl_thumb_attr', 'mainlib_magellan_wpsl_thumb_attr' );
 add_filter( 'wpsl_store_meta', 'mainlib_magellan_wpsl_custom_store_meta', 10, 2 );
 add_filter( 'wpsl_post_type_labels', 'mainlib_magellan_wpsl_post_type_labels');
 add_filter( 'wpsl_sub_menu_items', 'mainlib_magellan_wpsl_sub_menu_items');
+add_filter( 'wpsl_enable_styled_dropdowns', '__return_false' );
+add_filter( 'wpsl_setting_dropdowns', 'mainlib_magellan_wpsl_setting_dropdowns');
+add_filter( 'wpsl_gmap_js', 'mainlib_magellan_wpsl_gmap_js');
+add_filter( 'pre_update_option_wpsl_settings', 'mainlib_magellan_wpsl_settings_update', 10, 3);
+
+
+add_filter( 'wpsl_settings_tab', 'mainlib_magellan_wpsl_add_custom_settings_tab');
+add_filter( 'wpsl_settings_section', 'mainlib_magellan_wpsl_render_custom_settings_tab');
 
 
 //
@@ -206,13 +214,13 @@ function mainlib_magellan_render_settings_page() {
   include(__DIR__."/templates/settings-page.php");
 }
 
+
 /**
  * Render the Closures Export page.
  */
 function mainlib_magellan_render_export_page() {
   include(__DIR__."/templates/export-page.php");
 }
-
 
 
 /**
@@ -237,6 +245,7 @@ function mainlib_magellan_alter_metaboxes() {
     }
   }
 }
+
 
 /**
  * Creates a new custom field group programatically
@@ -324,9 +333,6 @@ function mainlib_magellan_create_library_services_taxonomy_field_group() {
 function mainlib_magellan_hook_admin_menu() {
   global $submenu;
 
-
-
-
   if(array_key_exists("edit.php?post_type=wpsl_stores", $submenu)) {
     foreach($submenu['edit.php?post_type=wpsl_stores'] as &$m) {
       if($m[1] == "manage_options") {
@@ -379,6 +385,7 @@ function mainlib_magellan_add_order_sortable_column($columns) {
   return $columns;
 }
 
+
 /**
  * Output the Display Order (term_order) to our admincolumn
  *
@@ -417,3 +424,4 @@ function mainlib_magellan_add_services_to_post_content( $content ) {
 
   return $content;
 }
+

@@ -12,7 +12,13 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
 ?>
 <li data-store-id="<%= id %>">
     <div class="wpsl-store-location library-listing">
-        <div class="library-listing-title"><a href="<%= permalink %>" target="_blank"><strong><%= store %></strong></a><span class="library-listing-more-detail"><i class="fas fa-chevron-right"></i></span></div>
+        <div class="library-listing-title">
+            <?php if ($wpsl_settings['store_url']) { ?>
+            <a href="<%= permalink %>" target="_blank"><strong><%= store %></strong></a>
+            <?php } else { ?>
+                <strong><%= store %></strong>
+            <?php } ?>
+            <span class="library-listing-more-detail"><i class="fas fa-chevron-right"></i></span></div>
         <% if ( thumb ) { %>
         <div class="library-listing-thumb"><%= thumb %></div>
         <% } %>

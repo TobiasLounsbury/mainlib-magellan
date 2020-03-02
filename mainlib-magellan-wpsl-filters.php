@@ -97,7 +97,7 @@ function mainlib_magellan_wpsl_custom_listing_template($listing_template) {
  * @return mixed
  */
 function mainlib_magellan_wpsl_custom_cpt_info_window_template($template) {
-
+  //todo: Remove this if we aren't going to use it
   return $template;
 }
 
@@ -107,30 +107,29 @@ function mainlib_magellan_wpsl_custom_cpt_info_window_template($template) {
  * @return mixed
  */
 function mainlib_magellan_wpsl_custom_more_info_template($template) {
-
+  //todo: Remove this if we aren't going to use it
   return $template;
 }
 
 
 /**
- * Modifies the
- *
  * @param $template
  * @return mixed
  */
 function mainlib_magellan_wpsl_custom_store_header_template($template) {
+  //todo: Remove this if we aren't going to use it.
   return $template;
 }
 
+
 /**
- * Include the services
+ * Include the services in the location metadata
  *
  * @param $meta
  * @param $id
  * @return mixed
  */
 function mainlib_magellan_wpsl_custom_store_meta($meta, $id) {
-  //$meta['thumb'] = get_the_post_thumbnail( $id, $size = apply_filters( 'wpsl_thumb_size', array( 45, 45 ) ), apply_filters( 'wpsl_thumb_attr', $attr ) );
   $meta['services'] = array();
   $terms = wp_get_post_terms($id, "wpsl_store_category");
   foreach($terms as $term) {
@@ -139,7 +138,10 @@ function mainlib_magellan_wpsl_custom_store_meta($meta, $id) {
   return $meta;
 }
 
+
 /**
+ * Set the max render size of a location thumb
+ *
  * @param $size
  * @return mixed
  */
@@ -148,7 +150,10 @@ function mainlib_magellan_wpsl_thumb_size($size) {
   //return $size;
 }
 
+
 /**
+ * Add a class to the library thumb
+ *
  * @param $attr
  * @return mixed
  */
@@ -185,10 +190,14 @@ function mainlib_magellan_wpsl_post_type_labels($labels) {
 
 
 /**
+ * Add the Export menu item to the Store Locator sub-menu
+ *
  * @param $items
  * @return mixed
  */
 function mainlib_magellan_wpsl_sub_menu_items($items) {
+
+  //Todo: Should this be moved to its own tab under settings?
 
   $items[] = array(
     "caps" => "manage_wpsl_settings",
@@ -198,17 +207,76 @@ function mainlib_magellan_wpsl_sub_menu_items($items) {
     "page_title" => "MAIN Library Closed Dates Export",
   );
 
-  $items[] = array(
-      "caps" => "manage_wpsl_settings",
-      "function" => "mainlib_magellan_render_settings_page",
-      "menu_slug" => "mainlib_settings",
-      "menu_title" => "Magellan Custom Settings",
-      "page_title" => "Magellan Settings",
-  );
-
   return $items;
 }
 
 
+/**
+ * Add Magellan Custom settings as a tab to the Store
+ * Locator settings page
+ *
+ * @param $tabs
+ * @return mixed
+ */
+function mainlib_magellan_wpsl_add_custom_settings_tab($tabs) {
+  $tabs['magellan'] = "Magellan Custom Settings";
+  return $tabs;
+}
 
 
+/**
+ * Render the Magellan custom settings form if that is the
+ * selected tab
+ *
+ * @param $tab
+ */
+function mainlib_magellan_wpsl_render_custom_settings_tab($tab) {
+  if($tab == "magellan") {
+    mainlib_magellan_render_settings_page();
+  }
+}
+
+
+/**
+ * Add Magellan custom widget as a filter-type option
+ * for the category filter
+ *
+ * @param $options
+ * @return mixed
+ */
+function mainlib_magellan_wpsl_setting_dropdowns($options) {
+  $options['filter_types']['values']['magellan'] = "Magellan Custom Widget";
+  return $options;
+}
+
+
+/**
+ * Make sure that when a user attempt to set the category widget to "magellan"
+ * it sticks.
+ *
+ * @param $value
+ * @param $old_value
+ * @param $option
+ * @return mixed
+ */
+function mainlib_magellan_wpsl_settings_update($value, $old_value, $option) {
+  if(array_key_exists("wpsl_search", $_REQUEST) && array_key_exists("category_filter_type", $_REQUEST['wpsl_search']) && $_REQUEST['wpsl_search']['category_filter_type'] == "magellan") {
+    $value['category_filter_type'] = "magellan";
+  }
+  return $value;
+}
+
+
+/**
+ * Replace the wp-store-locator primary javascript file
+ * with our own, that is identical except for a front-end query filter
+ * added at line 1718 to the collectAjaxData() function
+ *
+ * @param $filename
+ * @return string
+ */
+function mainlib_magellan_wpsl_gmap_js($filename) {
+  $min = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+  return plugin_dir_url(__FILE__)."js/wpsl-gmap${min}.js";
+  //return $filename;
+}
