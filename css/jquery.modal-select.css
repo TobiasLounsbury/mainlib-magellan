@@ -1,0 +1,187 @@
+#jquery-modal-select-frame {
+    display: none;
+}
+
+.jquery-modal-select-overlay {
+    display:block;
+    opacity: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    transition: all 200ms linear;
+    background: #000;
+}
+
+#jquery-modal-select-frame.open .jquery-modal-select-overlay {
+    opacity: 0.35;
+}
+
+.jquery-modal-select-modal {
+    max-width: 90%;
+    max-height: 90%;
+    position: fixed;
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+    grid-template-columns: 100%;
+    transition: all 200ms linear;
+    opacity: 0;
+    z-index: 10000;
+}
+
+
+#jquery-modal-select-frame.open .jquery-modal-select-modal {
+    opacity: 1;
+}
+
+.jquery-modal-select-filter {
+    order: 1;
+}
+
+.jquery-modal-select-options-group {
+ order: 2;
+}
+
+.jquery-modal-select-okcancel {
+    display: none;
+}
+
+.jquery-modal-select-modal.multiple .jquery-modal-select-okcancel {
+    display: block;
+    order: 3;
+    text-align: center;
+}
+
+.jquery-modal-select-okcancel span {
+    background: #fff;
+    font-weight: bold;
+    color: #0a6aa1;
+    height: 48px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 0 20px;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+.jquery-modal-select-wrapper {
+    overflow-y: auto;
+}
+
+.jquery-modal-select-modal.default {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    box-shadow: 0 0 7px 2px #000;
+}
+
+.jquery-modal-select-filter-input {
+    width: 99%;
+    margin: auto;
+    box-shadow:  0 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+.jquery-modal-select-options-group ul {
+    margin: 0;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.jquery-modal-select-option {
+    white-space: nowrap!important;
+    overflow: hidden!important;
+    height: 30px;
+    text-decoration: none;
+    list-style-type: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: left;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    vertical-align: center;
+    opacity: 1;
+
+    transition: all 150ms linear;
+}
+
+.jquery-modal-select-option > * {
+    pointer-events: none;
+}
+
+.jquery-modal-select-option.selected {
+    background: rgba(28, 123, 161, 0.25);
+}
+.jquery-modal-select-option.jqms-option-hidden {
+    height: 0px!important;
+    opacity: 0;
+}
+
+
+.jquery-modal-select-indicator {
+    width: 100%;
+    border-radius: 3px;
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: #fff;
+    font-weight: bold;
+    color: #0a6aa1;
+    height: 35px;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+
+.jquery-modal-select-options-group::after,
+.jquery-modal-select-options-group::before,
+.jquery-modal-select-modal::before,
+.jquery-modal-select-modal::after,
+#jquery-modal-select-frame::after,
+#jquery-modal-select-frame::before {
+    content: none;
+}
+
+/** [ Mobile Settings ] **/
+@media (max-width: 767px) {
+
+    .jquery-modal-select-modal {
+        width: 90%;
+        position: fixed;
+        left: 5vw;
+        top: 5vh;
+    }
+}
+
+
+/** [ Desktop Settings ] **/
+@media (min-width: 768px) {
+    .jquery-modal-select-modal {
+        width: 400px;
+        position: fixed;
+        left: 50vw;
+        top: 5vh;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+.jquery-modal-hidden-accessible {
+    border: 0!important;
+    clip: rect(0 0 0 0)!important;
+    -webkit-clip-path: inset(50%)!important;
+    clip-path: inset(50%)!important;
+    height: 1px!important;
+    overflow: hidden!important;
+    padding: 0!important;
+    position: absolute!important;
+    width: 1px!important;
+    white-space: nowrap!important;
+}
