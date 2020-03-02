@@ -75,10 +75,13 @@ function mainlib_magellan_set_wpsl_default_settings() {
   $settings['template_id'] = "mainlib";
   $settings['category_label'] = "Library Services";
   $settings['radius_label'] = "Search Radius";
+  $settings['results_dropdown'] = 0;
   $settings['permalinks'] = 1;
-  $settings['category_filter'] = 1;
   $settings['direction_redirect'] = 1;
   $settings['search_radius'] = '5,[10],20,30';
+
+  $settings['category_filter'] = 1;
+  $settings['category_filter_type'] = 'magellan';
 
   //These can't be changed here because the way we are saving
   // doesn't trigger the cascading update to the related urls
