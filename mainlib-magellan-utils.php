@@ -30,7 +30,12 @@ function mainlib_magellan_create_category_filter($shortcodeOptions) {
 
   global $wpsl, $wpsl_settings;
 
-  $categories = (isset($shortcodeOptions['category'])) ? explode(",", $shortcodeOptions['category']) : array();
+
+  if(isset( $_REQUEST['wpsl-widget-categories'] )) {
+    $categories = explode(",", $_REQUEST['wpsl-widget-categories']);
+  } else {
+    $categories = (isset($shortcodeOptions['category'])) ? explode(",", $shortcodeOptions['category']) : array();
+  }
 
   $args = apply_filters( 'wpsl_dropdown_category_args', array(
           'show_option_none'  => $wpsl->i18n->get_translation( 'category_default_label', __( 'Any', 'wpsl' ) ),
