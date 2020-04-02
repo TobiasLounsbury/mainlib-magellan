@@ -14,6 +14,13 @@
                     </p>
                     <hr>
                     <p>
+                        <label for="mainlib_magellan_services_path"><strong>Path to Library Services Page:</strong></label>
+                    </p>
+                    <p>
+                        <span><?php echo get_site_url(); ?>/</span><input type="text" id="mainlib_magellan_services_path" name="mainlib_magellan_services_path" value="<?php echo get_option('mainlib_magellan_services_path'); ?>" /><span>/</span>
+                    </p>
+                    <hr>
+                    <p>
                         <label for="mainlib_magellan_default_icon"><strong>Default Library Service Icon:</strong></label>
                     </p>
                     <p>

@@ -64,8 +64,10 @@ function mainlib_magellan_create_category_filter($shortcodeOptions) {
 
   if ( count( $terms ) > 0 ) {
 
+    $servicesPath = get_option("mainlib_magellan_services_path");
+
     $category = '<div id="wpsl-category" class="magellan-input-group c2">' . "\r\n";
-    $category .= "<label for='${args['id']}'>" . esc_html( $wpsl->i18n->get_translation( 'category_label', __( 'Category', 'wpsl' ) ) ) . '</label>' . "\r\n";
+    $category .= "<label for='${args['id']}'>" . esc_html( $wpsl->i18n->get_translation( 'category_label', __( 'Category', 'wpsl' ) ) ) . ' <a href="/'.$servicesPath.'" target="_blank"><i class="fas fa-external-link-alt"></i></a></label>' . "\r\n";
     $category .= "<select name='${args['name']}' id='${args['id']}' class='${args['class']} magellan-input' multiple='multiple'>\n";
 
     foreach($terms as $term) {

@@ -179,6 +179,9 @@ function mainlib_magellan_hook_admin_init() {
   add_option( 'mainlib_magellan_locations_path', 'locations');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_locations_path');
 
+  add_option( 'mainlib_magellan_services_path', 'library-services');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_path');
+
   add_option( 'mainlib_magellan_default_icon', 'fas fa-concierge-bell');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
 
