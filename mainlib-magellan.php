@@ -37,7 +37,6 @@ define( 'MAINLIB_MAGELLAN_VERSION', '1.0.0' );
 register_activation_hook( __FILE__, 'mainlib_magellan_activate' );
 
 //Add some Filter Hooks
-add_filter( 'do_shortcode_tag', 'mainlib_magellan_shortcode_injection', 10, 4);
 add_filter('template_include', 'mainlib_magellan_set_template');
 
 //Store Locator Hooks
@@ -92,6 +91,9 @@ add_filter("manage_wpsl_store_category_custom_column", 'mainlib_magellan_add_ord
 //Hook that lets me hook in and add the library services to the content stream
 add_filter("the_content", 'mainlib_magellan_add_services_to_post_content');
 
+//Hook to forward library users directly to the dashboard
+add_action( 'login_redirect', 'mainlib_magellan_login_redirect', 99, 3);
+
 
 /**
  * Take actions on plugin activation
@@ -109,25 +111,6 @@ function mainlib_magellan_activate() {
  */
 function mainlib_magellan_acf_add_local_field_groups() {
   mainlib_magellan_create_library_services_taxonomy_field_group();
-}
-
-
-/**
- *
- *
- * @param $output
- * @param $tag
- * @param $attr
- * @param $m
- * @return mixed
- */
-function mainlib_magellan_shortcode_injection($output, $tag, $attr, $m) {
-  //todo: Delete this function if we don't need it for anything else.
-  if($tag == "wpsl") {
-    //This is done via the UI now
-    //return str_replace("Category filter", __( 'Library Services', 'mainlib' ), $output);
-  }
-  return $output;
 }
 
 
@@ -221,6 +204,27 @@ function mainlib_magellan_render_settings_page() {
 function mainlib_magellan_render_export_page() {
   include(__DIR__."/templates/export-page.php");
 }
+
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+function mainlib_magellan_login_redirect( $redirect_to, $request, $user ) {
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    if ( in_array( 'wpsl_store_coauthor', $user->roles ) ) {
+      // redirect them to the dashboard
+      wp_redirect(get_dashboard_url($user->id));
+      exit;
+    }
+  }
+  return $redirect_to;
+}
+
+
 
 
 /**
