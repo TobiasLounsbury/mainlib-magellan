@@ -115,6 +115,16 @@
 .jquery-modal-select-option.selected {
     background: rgba(28, 123, 161, 0.25);
 }
+
+.jquery-modal-select-option.selected:after {
+    content: "\f00c";
+    font-weight: 900;
+    font-family: 'Font Awesome 5 Free';
+    color: #0AAB2E;
+    float: right;
+    margin-right: 10px;
+}
+
 .jquery-modal-select-option.jqms-option-hidden {
     height: 0px!important;
     opacity: 0;
