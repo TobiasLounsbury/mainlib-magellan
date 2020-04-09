@@ -7,10 +7,10 @@
  * @param boolean $hideEmpty Used to either include or exclude categories that are empty
  * @return array|int|WP_Error
  */
-function mainlib_magellan_get_all_library_service_terms($hideEmpty = false) {
+function mainlib_magellan_get_all_library_service_terms($hideEmpty = false, $orderby = "term_order") {
   return get_terms( array(
       'taxonomy' => 'wpsl_store_category',
-      'orderby' => "term_order",
+      'orderby' => $orderby,
       'hide_empty' => $hideEmpty,
   ) );
 }
