@@ -24,18 +24,15 @@ if(!empty($terms)) {
   $locationsPath = get_option("mainlib_magellan_locations_path");
   $defaultIcon = get_option("mainlib_magellan_default_icon");
   ?>
-  
-  <div style="text-align: right">
     <form method="get">
       <label for="sort-services-by"><strong>Sort: </strong></label>
       <select name="sort-services-by" id="sort-services-by"
-              style="text-align: left; display: inline-block; width: 200px;" onchange="submit()">
+              style="display: inline-block; width: 200px;" onchange="submit()">
         <option value="name" <?php echo ($sortby == "name") ? "selected" : ""; ?>>Alphabetically</option>
         <option value="count" <?php echo ($sortby == "count") ? "selected" : ""; ?>>Popularity</option>
       </select>
       <p>&nbsp;</p>
     </form>
-  </div>
 
   <?php
   foreach ($terms as $term) {
