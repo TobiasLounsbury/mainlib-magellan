@@ -115,8 +115,9 @@ transform: rotate(90deg);
 text-align: center;
 }
 
+
 .library-service-icon-title-svg-text {
-    font: italic 15px sans-serif;
+    font: italic 10px sans-serif;
     dominant-baseline: middle;
     text-anchor: middle;
     fill: black;
@@ -175,15 +176,18 @@ text-align: center;
     margin: 7px 0 0 0;
     transition: all .5s ease-in-out;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 55px);
-    //grid-template-columns: repeat(5, 20%);
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    grid-gap: 2px;
     width: 100%;
     justify-items: center;
     justify-content: space-evenly;
     box-sizing: border-box;
     overflow: hidden;
     max-height: 70px;
+}
+
+.library-listing-available-services .library-service-icon-svg {
+    max-height: 56px;
 }
 
 .library-listing.expanded .library-listing-available-services {
