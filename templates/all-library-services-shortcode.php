@@ -8,7 +8,7 @@ if(!empty($terms)) {
   $sortby = (array_key_exists("sort-services-by", $_REQUEST)) ? $_REQUEST['sort-services-by'] : "name";
 
   if (!property_exists($terms[0], $sortby)) {
-    $sortby = "name";ks it leaves y
+    $sortby = "name";
   }
 
   usort($terms, function ($a, $b) use ($sortby) {
