@@ -28,6 +28,15 @@
                     </p>
 
                     <hr>
+
+                    <p>
+                        <label for="mainlib_magellan_special_hours_warning_text"><strong>Library Location Special Hours Text:</strong></label>
+                    </p>
+                    <p>
+                        <textarea id="mainlib_magellan_special_hours_warning_text" name="mainlib_magellan_special_hours_warning_text"><?php echo get_option('mainlib_magellan_special_hours_warning_text'); ?></textarea>
+                    </p>
+
+                    <hr>
                     
                     <p><label for="mainlib_magellan_navigation_hint"><strong>Hint Texts:</strong></label></p>
 
