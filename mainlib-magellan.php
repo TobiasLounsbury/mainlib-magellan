@@ -185,6 +185,25 @@ function mainlib_magellan_hook_admin_init() {
   add_option( 'mainlib_magellan_default_icon', 'fas fa-concierge-bell');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
 
+
+  //Hint Text Options
+  add_option( 'mainlib_magellan_navigation_hint', 'Open in Google Maps');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_navigation_hint');
+
+  add_option( 'mainlib_magellan_call_hint', 'Call this Library');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_call_hint');
+
+  add_option( 'mainlib_magellan_more_info_hint', 'Show Hours and More Details');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_more_info_hint');
+
+  add_option( 'mainlib_magellan_map_view_hint', 'Map View');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_map_view_hint');
+
+  add_option( 'mainlib_magellan_list_view_hint', 'List View');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_list_view_hint');
+
+
+
   //Handle Closed Data Export
   if ( array_key_exists( 'action', $_REQUEST ) && $_REQUEST['action'] == 'magellan_export') {
     require_once("mainlib-magellan-export.php");

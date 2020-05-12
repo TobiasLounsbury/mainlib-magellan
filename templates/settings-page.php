@@ -26,6 +26,27 @@
                     <p>
                         <input type="text" id="mainlib_magellan_default_icon" name="mainlib_magellan_default_icon" class="magellan-fa-select" value="<?php echo get_option('mainlib_magellan_default_icon'); ?>" />
                     </p>
+
+                    <hr>
+                    
+                    <p><label for="mainlib_magellan_navigation_hint"><strong>Hint Texts:</strong></label></p>
+
+                    <p><label for="mainlib_magellan_navigation_hint"><strong>Navigation Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_navigation_hint" name="mainlib_magellan_navigation_hint" value="<?php echo get_option('mainlib_magellan_navigation_hint'); ?>" /></p>
+
+                    <p><label for="mainlib_magellan_call_hint"><strong>Call Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_call_hint" name="mainlib_magellan_call_hint" value="<?php echo get_option('mainlib_magellan_call_hint'); ?>" /></p>
+
+                    <p><label for="mainlib_magellan_more_info_hint"><strong>More Info Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_more_info_hint" name="mainlib_magellan_more_info_hint" value="<?php echo get_option('mainlib_magellan_more_info_hint'); ?>" /></p>
+
+                    <p><label for="mainlib_magellan_map_view_hint"><strong>Map View Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_map_view_hint" name="mainlib_magellan_map_view_hint" value="<?php echo get_option('mainlib_magellan_map_view_hint'); ?>" /></p>
+
+                    <p><label for="mainlib_magellan_list_view_hint"><strong>List View Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_list_view_hint" name="mainlib_magellan_list_view_hint" value="<?php echo get_option('mainlib_magellan_list_view_hint'); ?>" /></p>
+
+
                   <?php  submit_button(); ?>
                 </div>
             </div>

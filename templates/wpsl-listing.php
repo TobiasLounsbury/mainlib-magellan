@@ -18,7 +18,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
             <?php } else { ?>
                 <strong><%= store %></strong>
             <?php } ?>
-            <span class="library-listing-more-detail library-listing-toggle-more-detail"><i class="fas fa-chevron-right"></i></span></div>
+            <span class="library-listing-more-detail library-listing-toggle-more-detail" title="<?php echo get_option("mainlib_magellan_more_info_hint", "Show Hours and More Details"); ?>"><i class="fas fa-chevron-right"></i></span></div>
         <% if ( thumb ) { %>
         <div class="library-listing-thumb"><%= thumb %></div>
         <% } %>
@@ -82,7 +82,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
                   </p>
               <?php } ?>
 
-                <span class="library-listing-toggle-more-detail library-listing-more-detail-link">
+                <span class="library-listing-toggle-more-detail library-listing-more-detail-link" title="<?php echo get_option("mainlib_magellan_more_info_hint", "Show Hours and More Details"); ?>">
                     <span class="library-listing-more-detail-link-text more">-More Info-</span>
                     <span class="library-listing-more-detail-link-text less">-Less Info-</span>
                 </span>
@@ -96,11 +96,11 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
             </div>
 
             <div class="library-actions">
-                <%= createDirectionUrl().replace(wpslLabels.directions, "<span class='library-action-button'><i class='fas fa-location-arrow'></i></span>") %>
+                <%= createDirectionUrl().replace(wpslLabels.directions, "<span class='library-action-button' title='<?php echo get_option("mainlib_magellan_navigation_hint", "Open in Google Maps"); ?>'><i class='fas fa-location-arrow'></i></span>") %>
                 <% if ( phone ) { %>
-                <a href="tel:<%= phone %>"><span class='library-action-button'><i class='fas fa-phone-alt'></i></span></a>
+                <a href="tel:<%= phone %>" title="<?php echo get_option("mainlib_magellan_call_hint", "Call this Library"); ?>"><span class='library-action-button'><i class='fas fa-phone-alt'></i></span></a>
                 <% } %>
-                <span class='library-listing-more-detail-i library-action-button library-listing-toggle-more-detail'><i class='fas fa-clock'></i></span>
+                <span class='library-listing-more-detail-i library-action-button library-listing-toggle-more-detail' title="<?php echo get_option("mainlib_magellan_more_info_hint", "Show Hours and More Details"); ?>"><i class='fas fa-clock'></i></span>
             </div>
         </div>
 

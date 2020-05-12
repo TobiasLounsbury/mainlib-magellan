@@ -96,8 +96,8 @@ $thumb_size = $this->get_store_thumb_size();
             <label>&nbsp;</label>
             <input id="wpsl-search-btn" type="submit" value="<?php echo esc_attr( $wpsl->i18n->get_translation( 'search_btn_label', __( 'Search', 'wpsl' ) ) ); ?>">
             <div class="wpsl-view-select">
-              <button type="button" class="view-active view-select-button view-map">&#xf279;</button>
-              <button type="button" class="view-select-button view-list">&#xf00b;</button>
+              <button type="button" class="view-active view-select-button view-map" title="<?php echo get_option("mainlib_magellan_map_view_hint", "Map View"); ?>">&#xf279;</button>
+              <button type="button" class="view-select-button view-list" title="<?php echo get_option("mainlib_magellan_list_view_hint", "List View"); ?>">&#xf00b;</button>
             </div>
           </div>
         </div>
