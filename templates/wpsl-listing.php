@@ -87,8 +87,8 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
                 <% } %>
 
                 <span class="library-listing-toggle-more-detail library-listing-more-detail-link" title="<?php echo get_option("mainlib_magellan_more_info_hint", "Show Hours and More Details"); ?>">
-                    <span class="library-listing-more-detail-link-text more">-More Info-</span>
-                    <span class="library-listing-more-detail-link-text less">-Less Info-</span>
+                    <span class="library-listing-more-detail-link-text more">More Info</span>
+                    <span class="library-listing-more-detail-link-text less">Less Info</span>
                 </span>
 
               <?php if ( !$wpsl_settings['hide_hours'] ) { ?>
