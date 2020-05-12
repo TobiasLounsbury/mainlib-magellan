@@ -24,7 +24,7 @@
 
   //Handle toggling expandable blocks
   $("#page").click(function(event) {
-    if ($(event.target).hasClass("library-listing-more-detail") || $(event.target).hasClass("library-listing-more-detail-i")) {
+    if ($(event.target).hasClass("library-listing-toggle-more-detail")) {
       let parent = $(event.target).closest(".library-listing");
       parent.toggleClass("expanded");
       if(parent.hasClass("expanded")) {

@@ -107,6 +107,25 @@ transition: all .5s ease-in-out;
 transform: rotate(0deg);
 }
 
+.library-listing-more-detail-link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0a6aa1;
+}
+.library-listing-more-detail-link-text {
+    pointer-events: none;
+}
+.library-listing-more-detail-link-text.less {
+    display:none;
+}
+.library-listing.expanded .library-listing-more-detail-link-text.less {
+    display: block;
+}
+.library-listing.expanded .library-listing-more-detail-link-text.more {
+    display: none;
+}
+
+
 .library-listing.expanded .library-listing-more-detail i {
 transform: rotate(90deg);
 }

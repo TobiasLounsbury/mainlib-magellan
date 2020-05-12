@@ -18,7 +18,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
             <?php } else { ?>
                 <strong><%= store %></strong>
             <?php } ?>
-            <span class="library-listing-more-detail"><i class="fas fa-chevron-right"></i></span></div>
+            <span class="library-listing-more-detail library-listing-toggle-more-detail"><i class="fas fa-chevron-right"></i></span></div>
         <% if ( thumb ) { %>
         <div class="library-listing-thumb"><%= thumb %></div>
         <% } %>
@@ -82,6 +82,11 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
                   </p>
               <?php } ?>
 
+                <span class="library-listing-toggle-more-detail library-listing-more-detail-link">
+                    <span class="library-listing-more-detail-link-text more">-More Info-</span>
+                    <span class="library-listing-more-detail-link-text less">-Less Info-</span>
+                </span>
+
               <?php if ( !$wpsl_settings['hide_hours'] ) { ?>
                   <% if ( hours ) { %>
                   <div class="wpsl-store-hours expandable-js"><strong><?php echo esc_html( $wpsl->i18n->get_translation( 'hours_label', __( 'Hours', 'wpsl' ) ) ) ?></strong><%= hours %></div>
@@ -95,7 +100,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
                 <% if ( phone ) { %>
                 <a href="tel:<%= phone %>"><span class='library-action-button'><i class='fas fa-phone-alt'></i></span></a>
                 <% } %>
-                <span class='library-listing-more-detail-i library-action-button'><i class='fas fa-clock'></i></span>
+                <span class='library-listing-more-detail-i library-action-button library-listing-toggle-more-detail'><i class='fas fa-clock'></i></span>
             </div>
         </div>
 
