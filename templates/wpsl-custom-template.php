@@ -58,7 +58,7 @@ $thumb_size = $this->get_store_thumb_size();
           <?php
             if ( $wpsl_settings['radius_dropdown'] ) {
               ?>
-              <div id="wpsl-radiu" class="magellan-input-group">
+              <div id="wpsl-radius" class="magellan-input-group">
                 <label for="wpsl-radius-dropdown"><?php echo esc_html( $wpsl->i18n->get_translation( 'radius_label', __( 'Search radius', 'wpsl' ) ) ); ?></label>
                 <select id="wpsl-radius-dropdown" class="wpsl-dropdow magellan-input" name="wpsl-radius">
                   <?php echo $this->get_dropdown_list( 'search_radius' );?>
