@@ -75,6 +75,7 @@ function mainlib_magellan_set_wpsl_default_settings() {
   $settings['template_id'] = "mainlib";
   $settings['category_label'] = "Library Services";
   $settings['radius_label'] = "Search Radius";
+  $settings['url_label'] = "URL";
   $settings['results_dropdown'] = 0;
   $settings['permalinks'] = 1;
   $settings['direction_redirect'] = 1;
