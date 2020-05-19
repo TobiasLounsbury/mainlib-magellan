@@ -50,7 +50,7 @@
 }
 
 #wpsl-wrap.view-map .view-select-button.view-map, #wpsl-wrap.view-list .view-select-button.view-list, .library-action-button i {
-    color: #4a90e2;
+    color: #0099ff;
 }
 
 #wpsl-result-list {
@@ -110,7 +110,7 @@ transform: rotate(0deg);
 .library-listing-more-detail-link {
     cursor: pointer;
     text-decoration: underline;
-    color: #0a6aa1;
+    color: #0099ff;
 }
 .library-listing-more-detail-link-text {
     pointer-events: none;
