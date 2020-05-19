@@ -211,6 +211,11 @@ text-align: center;
     max-height: 70px;
 }
 
+#wpsl-wrap.view-list .library-listing-available-services {
+    max-height: 90px;
+}
+
+
 .library-listing-available-services .library-service-icon-svg {
     max-height: 56px;
 }
