@@ -31,9 +31,12 @@
           </svg>
         </div>
         <figcaption class='library-service-icon-title'>
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 70 24" class="library-service-icon-title-svg">
-            <text x="35" y="12" <?php if (strlen($term->name) > 8) { ?>textLength="66px" <?php } ?>
-                  class="library-service-icon-title-svg-text"><?php echo $term->name; ?></text>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 24" class="library-service-icon-title-svg">
+              <?php
+              $displayName = (strlen($term->name) > 18) ? substr($term->name, 0, 15)."..." : $term->name;
+              ?>
+              <text x="50" y="12" <?php if (strlen($displayName) > 14) { ?>textLength="100%" <?php } ?>
+                  class="library-service-icon-title-svg-text"><?php echo $displayName; ?></text>
           </svg>
         </figcaption>
       </figure>
