@@ -37,7 +37,12 @@
                     </p>
 
                     <hr>
-                    
+
+                    <p><label for="mainlib_magellan_services_radius"><strong>Search Radius when arriving from Library Services Page:</strong></label></p>
+                    <p><input type="text" id="mainlib_magellan_services_radius" name="mainlib_magellan_services_radius" value="<?php echo get_option('mainlib_magellan_services_radius', '30'); ?>" /></p>
+
+                    <hr>
+
                     <p><label for="mainlib_magellan_navigation_hint"><strong>Hint Texts:</strong></label></p>
 
                     <p><label for="mainlib_magellan_navigation_hint"><strong>Navigation Icon:</strong></label>

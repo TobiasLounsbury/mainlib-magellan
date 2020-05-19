@@ -186,7 +186,11 @@ function mainlib_magellan_hook_admin_init() {
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
 
 
-  //Hint Text Options
+    add_option( 'mainlib_magellan_services_radius', '30');
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_radius');
+
+
+  //Text Options
   add_option( 'mainlib_magellan_navigation_hint', 'Open in Google Maps');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_navigation_hint');
 
