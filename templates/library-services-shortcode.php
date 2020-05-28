@@ -33,9 +33,9 @@
         <figcaption class='library-service-icon-title'>
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 24" class="library-service-icon-title-svg">
               <?php
-              $displayName = (strlen($term->name) > 18) ? substr($term->name, 0, 15)."..." : $term->name;
+              $displayName = (strlen($term->name) > 20) ? substr($term->name, 0, 18)."..." : $term->name;
               ?>
-              <text x="50" y="12" <?php if (strlen($displayName) > 14) { ?>textLength="100%" <?php } ?>
+              <text x="50" y="12" <?php if (strlen($displayName) > 18) { ?>textLength="100" <?php } ?>
                   class="library-service-icon-title-svg-text"><?php echo $displayName; ?></text>
           </svg>
         </figcaption>
