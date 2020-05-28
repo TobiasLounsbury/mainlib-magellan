@@ -140,6 +140,9 @@ text-align: center;
     }
 }
 
+.library-service-icon-title-svg {
+    max-height: 36px;
+}
 
 .library-service-icon-title-svg-text {
     font: italic 10px sans-serif;
@@ -211,13 +214,9 @@ text-align: center;
     max-height: 70px;
 }
 
-#wpsl-wrap.view-list .library-listing-available-services {
-    max-height: 90px;
-}
-
-
+.library-service-icon,
 .library-listing-available-services .library-service-icon-svg {
-    max-height: 56px;
+    max-height: 50px;
 }
 
 .library-listing.expanded .library-listing-available-services {
