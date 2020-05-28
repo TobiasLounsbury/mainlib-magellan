@@ -20,6 +20,33 @@ function mainlib_magellan_wpsl_custom_meta_box_fields($meta) {
 }
 
 
+function mainlib_magellan_wpsl_store_search() {
+    if ( isset( $_GET['filter'] ) && $_GET['filter'] ) {
+        $_GET['mainlib_filter'] = $_GET['filter'];
+        unset($_GET['filter']);
+    }
+}
+
+function mainlib_magellan_wpsl_sql($sql) {
+
+    if ( isset( $_GET['mainlib_filter'] ) && $_GET['mainlib_filter'] ) {
+        $filter_ids = array_map( 'absint', explode( ',', $_GET['mainlib_filter'] ) );
+        $union = get_option('mainlib_magellan_category_union', 'AND');
+        $join = "LEFT JOIN (SELECT object_id, (1) as has_term_%tid% FROM wp_term_relationships WHERE term_taxonomy_id = %tid%) as ht%tid% ON ht%tid%.object_id=posts.ID";
+        $wheres = [];
+        $joins = [];
+        foreach($filter_ids as $fid) {
+            $joins[] = str_replace("%tid%", $fid, $join);
+            $wheres[] = "has_term_{$fid} = 1";
+        }
+        $where = "\n". implode("\n", $joins). "\n WHERE ( ". implode(" {$union} ", $wheres) ." ) AND ";
+        $sql = str_replace("WHERE ", $where, $sql);
+    }
+
+    return $sql;
+}
+
+
 /**
  * Alter the WPSL Cateogry taxonomy to conform to the Magellan requirements
  *

@@ -27,6 +27,16 @@
                         <input type="text" id="mainlib_magellan_default_icon" name="mainlib_magellan_default_icon" class="magellan-fa-select" value="<?php echo get_option('mainlib_magellan_default_icon'); ?>" />
                     </p>
 
+                    <p>
+                        <label for="mainlib_magellan_category_union"><strong>Library Service Search Method:</strong></label>
+                    </p>
+                    <p>
+                        <select id="mainlib_magellan_category_union" name="mainlib_magellan_category_union">
+                            <option value="AND" <?php echo (get_option('mainlib_magellan_category_union') == "AND") ? "selected" : ""; ?>>Show only libraries matching ALL selected services (AND)</option>
+                            <option value="OR" <?php echo (get_option('mainlib_magellan_category_union') == "OR") ? "selected" : ""; ?>>Show libraries mathcing ANY of the selected services (OR)</option>
+                        </select>
+                    </p>
+
                     <hr>
 
                     <p>

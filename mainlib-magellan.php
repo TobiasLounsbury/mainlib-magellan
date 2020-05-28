@@ -57,6 +57,10 @@ add_filter( 'wpsl_setting_dropdowns', 'mainlib_magellan_wpsl_setting_dropdowns')
 add_filter( 'wpsl_gmap_js', 'mainlib_magellan_wpsl_gmap_js');
 add_filter( 'pre_update_option_wpsl_settings', 'mainlib_magellan_wpsl_settings_update', 10, 3);
 
+add_filter( 'wpsl_sql', 'mainlib_magellan_wpsl_sql');
+add_action( 'wp_ajax_store_search', 'mainlib_magellan_wpsl_store_search', 9);
+add_action( 'wp_ajax_nopriv_store_search', 'mainlib_magellan_wpsl_store_search', 9);
+
 
 add_filter( 'wpsl_settings_tab', 'mainlib_magellan_wpsl_add_custom_settings_tab');
 add_filter( 'wpsl_settings_section', 'mainlib_magellan_wpsl_render_custom_settings_tab');
@@ -188,6 +192,9 @@ function mainlib_magellan_hook_admin_init() {
 
     add_option( 'mainlib_magellan_services_radius', '30');
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_radius');
+
+    add_option( 'mainlib_magellan_category_union', 'AND');
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_category_union');
 
 
   //Text Options
