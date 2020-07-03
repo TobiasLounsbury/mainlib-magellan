@@ -51,6 +51,11 @@
                     <p><label for="mainlib_magellan_services_radius"><strong>Search Radius when arriving from Library Services Page:</strong></label></p>
                     <p><input type="text" id="mainlib_magellan_services_radius" name="mainlib_magellan_services_radius" value="<?php echo get_option('mainlib_magellan_services_radius', '30'); ?>" /></p>
 
+                    <p>
+                        <label for="mainlib_magellan_hide_create_services"><strong>Disable Add New Service:</strong></label>
+                        <input type="checkbox" id="mainlib_magellan_hide_create_services" name="mainlib_magellan_hide_create_services" value="1" <?php echo (get_option('mainlib_magellan_hide_create_services') == 1) ? "checked" : ""; ?> />
+                    </p>
+
                     <hr>
 
                     <p><label for="mainlib_magellan_navigation_hint"><strong>Hint Texts:</strong></label></p>

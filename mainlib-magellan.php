@@ -166,6 +166,11 @@ function mainlib_magellan_acf_admin_enqueue_scripts() {
 
   wp_enqueue_style("magellan", plugin_dir_url(__FILE__)."css/magellan.css");
   wp_enqueue_script("magellan-admin", plugin_dir_url(__FILE__)."js/magellan-admin.js", array('jquery', 'select2'));
+
+    if (get_option('mainlib_magellan_hide_create_services') == 1) {
+        wp_enqueue_script("magellan-disable-services", plugin_dir_url(__FILE__)."js/magellan-disable-new-services.js", array('magellan-admin'));
+    }
+
 }
 
 
@@ -189,6 +194,8 @@ function mainlib_magellan_hook_admin_init() {
   add_option( 'mainlib_magellan_default_icon', 'fas fa-concierge-bell');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_default_icon');
 
+    add_option( 'mainlib_magellan_hide_create_services', "1");
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_hide_create_services');
 
     add_option( 'mainlib_magellan_services_radius', '30');
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_radius');
