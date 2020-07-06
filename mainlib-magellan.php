@@ -169,6 +169,7 @@ function mainlib_magellan_acf_admin_enqueue_scripts() {
 
     if (get_option('mainlib_magellan_hide_create_services') == 1) {
         wp_enqueue_script("magellan-disable-services", plugin_dir_url(__FILE__)."js/magellan-disable-new-services.js", array('magellan-admin'));
+        wp_enqueue_style("magellan-disable-services-css", plugin_dir_url(__FILE__)."css/magellan-disable-new-services.css");
     }
 
 }
