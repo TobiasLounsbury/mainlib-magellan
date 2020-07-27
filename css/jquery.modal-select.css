@@ -20,11 +20,11 @@
 }
 
 .jquery-modal-select-modal {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 90vw;
+    max-height: 90vh;
     position: fixed;
     display: grid;
-    grid-template-rows: 50px auto 50px;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
     transition: all 200ms linear;
     opacity: 0;
@@ -41,7 +41,8 @@
 }
 
 .jquery-modal-select-options-group {
- order: 2;
+    order: 2;
+    overflow-y: auto;
 }
 
 .jquery-modal-select-okcancel {
@@ -163,7 +164,7 @@
 @media (max-width: 767px) {
 
     .jquery-modal-select-modal {
-        width: 90%;
+        width: 90vw;
         position: fixed;
         left: 5vw;
         top: 5vh;
