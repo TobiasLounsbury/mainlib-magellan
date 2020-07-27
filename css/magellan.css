@@ -214,6 +214,11 @@ text-align: center;
     max-height: 70px;
 }
 
+.library-services.library-listing-available-services {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+
 .library-service-icon,
 .library-listing-available-services .library-service-icon-svg {
     max-height: 50px;
