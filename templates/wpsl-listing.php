@@ -33,18 +33,18 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
             if(!array_key_exists("default_service", $meta) || !$meta['default_service']) {
                 echo "<% if ( _.contains(services, '{$term->slug}') ) { %>";
             }
-            ?>
+
+              //$displayName = (strlen($term->name) > 18) ? substr($term->name, 0, 15) . "..." : $term->name;
+              $displayName = $term->name;
+              ?>
               <figure class='library-listing-single-service <% if ( _.contains(services, '<?php echo $term->slug; ?>') ) { %>service-available<% } %>'>
               <div class='library-service-icon'><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 56 56" class="library-service-icon-svg">
                       <text x="28" y="28" class="library-service-icon-svg-text main-<?php echo substr($meta['service_icon'], 0, 3); ?>" >&#x<?php echo $iconClassList[$meta['service_icon']]; ?>;</text>
                       <circle class="library-service-icon-svg-available-background" cx="45" cy="44" r="7"/>
                       <text x="45" y="45" class="library-service-icon-svg-available" >&#xf058;</text>
                   </svg></div>
-              <figcaption class='library-service-icon-title'><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 76 18" class="library-service-icon-title-svg">
-                      <?php
-                      $displayName = (strlen($term->name) > 18) ? substr($term->name, 0, 15)."..." : $term->name;
-                      ?>
-                      <text x="38" y="9" <?php if (strlen($displayName) > 14 ) { ?>textLength="100%" <?php } ?>  class="library-service-icon-title-svg-text" ><?php echo $displayName; ?></text>
+              <figcaption class='library-service-icon-title'><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 <?php echo (strlen($displayName) > 16) ? ((strlen($displayName) - 16) * 6) + 80 : 80; ?> 20" class="library-service-icon-title-svg">
+                      <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="library-service-icon-title-svg-text" ><?php echo $displayName; ?></text>
                   </svg></figcaption></figure><?php
             if(!array_key_exists("default_service", $meta) || !$meta['default_service']) {
                 echo "<% } %>";

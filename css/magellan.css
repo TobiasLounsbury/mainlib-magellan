@@ -219,12 +219,16 @@ text-align: center;
     max-height: 50px;
 }
 
+.library-service-listing .library-service-icon {
+    max-height: 500px;
+}
+
 .library-listing.expanded .library-listing-available-services {
-    max-height: 280px;
+    max-height: 560px;
 }
 
 .library-services.library-listing-available-services {
-    max-height: 280px;
+    max-height: 560px;
 }
 
 .library-listing-single-service {
