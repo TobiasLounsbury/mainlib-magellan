@@ -233,7 +233,7 @@ text-align: center;
 }
 
 .library-services.library-listing-available-services {
-    max-height: 560px;
+    max-height: none;
 }
 
 .library-listing-single-service {
