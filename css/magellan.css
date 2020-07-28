@@ -383,4 +383,8 @@ display: none;
     #wpsl-search-wrap-magellan {
         grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
     }
+
+    .library-services.library-listing-available-services {
+        grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    }
 }
