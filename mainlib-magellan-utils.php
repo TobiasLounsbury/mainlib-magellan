@@ -62,6 +62,10 @@ function mainlib_magellan_create_category_filter($shortcodeOptions) {
   ));
 
 
+  //Sort the terms alphabetically: Doing it here because the normal filters inside get_terms resort the
+  // results no matter what is passed into the orderby arg.
+  usort($terms, function($a, $b) { return strtolower($a->name) > strtolower($b->name);});
+
   if ( count( $terms ) > 0 ) {
 
     $servicesPath = get_option("mainlib_magellan_services_path");
