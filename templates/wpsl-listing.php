@@ -22,7 +22,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
         <% if ( thumb ) { %>
         <div class="library-listing-thumb"><%= thumb %></div>
         <% } %>
-        <div class="library-listing-available-services">
+        <div class="library-listing-available-services" style="--icon-count:<?php echo count($terms); ?>;">
           <?php
           foreach($terms as $term) {
             $meta = get_fields("term_{$term->term_id}");

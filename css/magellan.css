@@ -229,7 +229,12 @@ text-align: center;
 }
 
 .library-listing.expanded .library-listing-available-services {
-    max-height: 580px;
+    /* 16 rows as fallback for old browsers like IE 10 and 11 because they don't support var() */
+    max-height: 1140px;
+
+    /* Calculated height of the icon container based on the number of terms in our DB.
+    This number is set via a custom property on the elements in the template */
+    max-height: calc((var(--icon-count) / 2) * 70px);
 }
 
 .library-services.library-listing-available-services {
