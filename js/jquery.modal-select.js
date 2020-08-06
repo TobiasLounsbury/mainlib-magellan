@@ -138,7 +138,7 @@
      * @private
      */
     _applyFilter: function() {
-      let filterText = this.$filterInput.val();
+      let filterText = this.$filterInput.val().toLowerCase();
       if (this.lastFilter != filterText) {
         this.lastFilter = filterText;
         if(filterText == "") {
