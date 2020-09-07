@@ -60,7 +60,7 @@ $thumb_size = $this->get_store_thumb_size();
               ?>
               <div id="wpsl-radius" class="magellan-input-group">
                 <label for="wpsl-radius-dropdown"><?php echo esc_html( $wpsl->i18n->get_translation( 'radius_label', __( 'Search radius', 'wpsl' ) ) ); ?></label>
-                <select id="wpsl-radius-dropdown" class="wpsl-dropdow magellan-input" name="wpsl-radius">
+                <select id="wpsl-radius-dropdown" class="wpsl-dropdown magellan-input" name="wpsl-radius">
                   <?php echo $this->get_dropdown_list( 'search_radius' );?>
                 </select>
               </div>
@@ -70,7 +70,7 @@ $thumb_size = $this->get_store_thumb_size();
               ?>
               <div id="wpsl-result" class="magellan-input-group">
                 <label for="wpsl-results-dropdown"><?php echo esc_html( $wpsl->i18n->get_translation( 'results_label', __( 'Results', 'wpsl' ) ) ); ?></label>
-                <select id="wpsl-results-dropdown" class="wpsl-dropdow magellan-input" name="wpsl-results">
+                <select id="wpsl-results-dropdown" class="wpsl-dropdown magellan-input" name="wpsl-results">
                   <?php echo $this->get_dropdown_list( 'max_results' ); ?>
                 </select>
               </div>
