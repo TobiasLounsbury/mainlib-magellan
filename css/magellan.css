@@ -358,6 +358,10 @@ display: none;
     width: 100% !important;
 }
 
+#wpsl-wrap input.magellan-small-input {
+    width: 75px;
+}
+
 #wpsl-search-wrap-magellan label {
     display: block;
     white-space: nowrap;
