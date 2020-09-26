@@ -111,6 +111,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
             </div>
 
             <div class="library-actions">
+                <a href="<%= permalink %>" target="_blank" title="<?php echo get_option("mainlib_magellan_services_hint", "View more services (if available)"); ?>"><span class='library-action-button'><i class='fas fa-concierge-bell'></i></span></a>
                 <%= createDirectionUrl().replace(wpslLabels.directions, "<span class='library-action-button' title='<?php echo get_option("mainlib_magellan_navigation_hint", "Open in Google Maps"); ?>'><i class='fas fa-location-arrow'></i></span>") %>
                 <% if ( phone ) { %>
                 <a href="tel:<%= phone %>" title="<?php echo get_option("mainlib_magellan_call_hint", "Call this Library"); ?>"><span class='library-action-button'><i class='fas fa-phone-alt'></i></span></a>
