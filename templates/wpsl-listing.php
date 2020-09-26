@@ -24,13 +24,16 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
         <% } %>
         <div class="library-listing-available-services" style="--icon-count:<?php echo count($terms); ?>;">
           <?php
+          $showDefaults = (get_option('mainlib_magellan_show_default_services_in_search') == 1);
           foreach($terms as $term) {
             $meta = get_fields("term_{$term->term_id}");
             $meta = ($meta) ? $meta : array();
+            $isDefault = $showDefaults && !(array_key_exists("default_service", $meta) || $meta['default_service']);
             if(!array_key_exists("service_icon", $meta)) {
                 $meta['service_icon'] = $defaultIcon;
             }
-            if(!array_key_exists("default_service", $meta) || !$meta['default_service']) {
+
+            if (!$isDefault) {
                 echo "<% if ( _.contains(services, '{$term->slug}') ) { %>";
             }
 
@@ -54,7 +57,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
               <figcaption class='library-service-icon-title'><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 <?php echo $boxWidth; ?> <?php echo $boxHeight; ?>" class="library-service-icon-title-svg">
                       <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="library-service-icon-title-svg-text" ><?php echo $displayName; ?></text>
                   </svg></figcaption></figure><?php
-            if(!array_key_exists("default_service", $meta) || !$meta['default_service']) {
+            if(!$isDefault) {
                 echo "<% } %>";
             }
           }
