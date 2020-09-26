@@ -198,8 +198,14 @@ function mainlib_magellan_hook_admin_init() {
     add_option( 'mainlib_magellan_hide_create_services', "1");
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_hide_create_services');
 
+    add_option( 'mainlib_magellan_show_default_services_in_search', "1");
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_show_default_services_in_search');
+
     add_option( 'mainlib_magellan_services_radius', '30');
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_radius');
+
+    add_option( 'mainlib_magellan_icon_limit', '8');
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_icon_limit');
 
     add_option( 'mainlib_magellan_category_union', 'AND');
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_category_union');

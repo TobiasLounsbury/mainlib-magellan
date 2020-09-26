@@ -48,8 +48,19 @@
 
                     <hr>
 
-                    <p><label for="mainlib_magellan_services_radius"><strong>Search Radius when arriving from Library Services Page:</strong></label></p>
-                    <p><input type="text" id="mainlib_magellan_services_radius" name="mainlib_magellan_services_radius" value="<?php echo get_option('mainlib_magellan_services_radius', '30'); ?>" /></p>
+                    <p><label for="mainlib_magellan_services_radius"><strong>Search Radius when arriving from Library Services Page:</strong></label>
+                    <input type="text" id="mainlib_magellan_services_radius" name="mainlib_magellan_services_radius" class="magellan-small-input" value="<?php echo get_option('mainlib_magellan_services_radius', '30'); ?>" /></p>
+
+
+                    <p><label for="mainlib_magellan_icon_limit"><strong>Max Number of Service icons to show in search:</strong></label>
+                    <input type="text" id="mainlib_magellan_icon_limit" name="mainlib_magellan_icon_limit" class="magellan-small-input" value="<?php echo get_option('mainlib_magellan_icon_limit', '8'); ?>" /></p>
+
+
+
+                    <p>
+                        <label for="mainlib_magellan_show_default_services_in_search"><strong>Show Default Services in Search Results:</strong></label>
+                        <input type="checkbox" id="mainlib_magellan_show_default_services_in_search" name="mainlib_magellan_show_default_services_in_search" value="1" <?php echo (get_option('mainlib_magellan_show_default_services_in_search') == 1) ? "checked" : ""; ?> />
+                    </p>
 
                     <p>
                         <label for="mainlib_magellan_hide_create_services"><strong>Disable Add New Service:</strong></label>
