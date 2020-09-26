@@ -9,6 +9,10 @@ wp_enqueue_script("modalSelect", plugin_dir_url(__FILE__)."../js/jquery.modal-se
 wp_enqueue_style("magellan", plugin_dir_url(__FILE__)."../css/magellan.css");
 wp_enqueue_script("magellan", plugin_dir_url(__FILE__)."../js/magellan.js", array('jquery'));
 
+//Add the limit to service icons
+$limit = intval(get_option('mainlib_magellan_icon_limit', '8')) + 1;
+wp_add_inline_style("magellan", ".library-listing-available-services .library-listing-single-service:nth-of-type(n+$limit) { display: none; }");
+
 $autoload_class = ( !$wpsl_settings['autoload'] ) ? 'class="wpsl-not-loaded"' : '';
 $wrapperClass = (array_key_exists("view", $_REQUEST) && in_array($_REQUEST['view'], ["list", "map"])) ? "view-{$_REQUEST['view']}" : "view-map";
 
