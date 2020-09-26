@@ -73,7 +73,7 @@
 
   //Handle Scrolling
   $( document ).ajaxComplete(function( event, xhr, settings ) {
-    if ( settings.url.includes("action=store_search")) {
+    if ( settings.url.includes("action=store_search") && $(".wpsl-mobile").length > 0) {
       let t = $("#wpsl-result-list").offset().top;
       if(jQuery.browser.mobile) {
         t = t - 105;
