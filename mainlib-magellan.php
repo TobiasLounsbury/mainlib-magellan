@@ -212,6 +212,9 @@ function mainlib_magellan_hook_admin_init() {
 
 
   //Text Options
+  add_option( 'mainlib_magellan_services_hint', 'View more services (if available)');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_hint');
+
   add_option( 'mainlib_magellan_navigation_hint', 'Open in Google Maps');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_navigation_hint');
 

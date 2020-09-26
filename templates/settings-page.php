@@ -69,7 +69,10 @@
 
                     <hr>
 
-                    <p><label for="mainlib_magellan_navigation_hint"><strong>Hint Texts:</strong></label></p>
+                    <p><label><strong>Hint Texts:</strong></label></p>
+
+                    <p><label for="mainlib_magellan_services_hint"><strong>Navigation Icon:</strong></label>
+                    <input type="text" id="mainlib_magellan_services_hint" name="mainlib_magellan_services_hint" value="<?php echo get_option('mainlib_magellan_services_hint'); ?>" /></p>
 
                     <p><label for="mainlib_magellan_navigation_hint"><strong>Navigation Icon:</strong></label>
                     <input type="text" id="mainlib_magellan_navigation_hint" name="mainlib_magellan_navigation_hint" value="<?php echo get_option('mainlib_magellan_navigation_hint'); ?>" /></p>
