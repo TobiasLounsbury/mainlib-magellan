@@ -28,7 +28,7 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
           foreach($terms as $term) {
             $meta = get_fields("term_{$term->term_id}");
             $meta = ($meta) ? $meta : array();
-            $isDefault = $showDefaults && !(array_key_exists("default_service", $meta) || $meta['default_service']);
+            $isDefault = $showDefaults && array_key_exists("default_service", $meta) && $meta['default_service'];
             if(!array_key_exists("service_icon", $meta)) {
                 $meta['service_icon'] = $defaultIcon;
             }
