@@ -44,9 +44,7 @@ add_filter( 'wpsl_store_category_args', 'mainlib_magellan_wpsl_store_category_ar
 add_filter( 'wpsl_meta_box_fields', 'mainlib_magellan_wpsl_custom_meta_box_fields' );
 add_filter( 'wpsl_templates', 'mainlib_magellan_wpsl_custom_templates' );
 add_filter( 'wpsl_listing_template', 'mainlib_magellan_wpsl_custom_listing_template' );
-add_filter( 'wpsl_more_info_template', 'mainlib_magellan_wpsl_custom_more_info_template' );
-add_filter( 'wpsl_store_header_template', 'mainlib_magellan_wpsl_custom_store_header_template' );
-add_filter( 'wpsl_cpt_info_window_template', 'mainlib_magellan_wpsl_custom_cpt_info_window_template' );
+
 add_filter( 'wpsl_thumb_size', 'mainlib_magellan_wpsl_thumb_size' );
 add_filter( 'wpsl_thumb_attr', 'mainlib_magellan_wpsl_thumb_attr' );
 add_filter( 'wpsl_store_meta', 'mainlib_magellan_wpsl_custom_store_meta', 10, 2 );
@@ -475,7 +473,7 @@ function mainlib_magellan_add_services_to_post_content( $content ) {
 
   if ( isset( $post->post_type ) && $post->post_type == 'wpsl_stores' && is_single() && in_the_loop() ) {
 
-    //todo: Load and javascript we might need.
+    //todo: Load any javascript we might need.
     $pos = strpos($content, '<div class="wpsl-locations-details">');
     if($pos) {
       $content = substr($content, 0, $pos). "[library-services]\n". substr($content, $pos);

@@ -118,38 +118,6 @@ function mainlib_magellan_wpsl_custom_listing_template($listing_template) {
 
 
 /**
- *
- *
- * @param $template
- * @return mixed
- */
-function mainlib_magellan_wpsl_custom_cpt_info_window_template($template) {
-  //todo: Remove this if we aren't going to use it
-  return $template;
-}
-
-
-/**
- * @param $template
- * @return mixed
- */
-function mainlib_magellan_wpsl_custom_more_info_template($template) {
-  //todo: Remove this if we aren't going to use it
-  return $template;
-}
-
-
-/**
- * @param $template
- * @return mixed
- */
-function mainlib_magellan_wpsl_custom_store_header_template($template) {
-  //todo: Remove this if we aren't going to use it.
-  return $template;
-}
-
-
-/**
  * Include the services in the location metadata
  *
  * @param $meta
