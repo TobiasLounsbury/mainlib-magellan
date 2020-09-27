@@ -230,8 +230,11 @@ function mainlib_magellan_hook_admin_init() {
   add_option( 'mainlib_magellan_list_view_hint', 'List View');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_list_view_hint');
 
-  add_option( 'mainlib_magellan_special_hours_warning_text', 'This library has special hours today');
+  add_option( 'mainlib_magellan_special_hours_warning_text', '<span><strong>This library has special hours today</strong></span>');
   register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_special_hours_warning_text');
+
+  add_option( 'mainlib_magellan_is_currently_closed_text', '<span><strong>Currently Closed</strong></span>');
+  register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_is_currently_closed_text');
 
 
   //Handle Closed Data Export

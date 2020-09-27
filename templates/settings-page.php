@@ -46,6 +46,13 @@
                         <textarea id="mainlib_magellan_special_hours_warning_text" name="mainlib_magellan_special_hours_warning_text"><?php echo get_option('mainlib_magellan_special_hours_warning_text'); ?></textarea>
                     </p>
 
+                    <p>
+                        <label for="mainlib_magellan_is_currently_closed_text"><strong>Library Location Currently Closed Text:</strong></label>
+                    </p>
+                    <p>
+                        <textarea id="mainlib_magellan_is_currently_closed_text" name="mainlib_magellan_is_currently_closed_text"><?php echo get_option('mainlib_magellan_is_currently_closed_text'); ?></textarea>
+                    </p>
+
                     <hr>
 
                     <p><label for="mainlib_magellan_services_radius"><strong>Search Radius when arriving from Library Services Page:</strong></label>
