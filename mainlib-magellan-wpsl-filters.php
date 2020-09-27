@@ -192,8 +192,6 @@ function mainlib_magellan_wpsl_post_type_labels($labels) {
  */
 function mainlib_magellan_wpsl_sub_menu_items($items) {
 
-  //Todo: Should this be moved to its own tab under settings?
-
   $items[] = array(
     "caps" => "manage_wpsl_settings",
     "function" => "mainlib_magellan_render_export_page",
@@ -273,5 +271,4 @@ function mainlib_magellan_wpsl_settings_update($value, $old_value, $option) {
 function mainlib_magellan_wpsl_gmap_js($filename) {
   $min = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
   return plugin_dir_url(__FILE__)."js/wpsl-gmap${min}.js";
-  //return $filename;
 }
