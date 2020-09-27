@@ -55,6 +55,7 @@
 
 #wpsl-result-list {
     transition: all .5s ease-in-out;
+    float: left;
 }
 #wpsl-wrap.view-list #wpsl-result-list {
     margin-right: 0;

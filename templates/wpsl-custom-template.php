@@ -107,8 +107,9 @@ $thumb_size = $this->get_store_thumb_size();
         </div>
       </form>
     </div>
-    <div id="wpsl-gmap" class="wpsl-gmap-canvas"></div>
-
+    <?php if (!(get_option('mainlib_magellan_map_below_results') == 1)) { ?>
+      <div id="wpsl-gmap" class="wpsl-gmap-canvas"></div>
+    <?php } ?>
     <div id="wpsl-result-list">
       <div id="wpsl-stores" <?php echo $autoload_class;?>>
         <ul></ul>
@@ -117,6 +118,9 @@ $thumb_size = $this->get_store_thumb_size();
         <ul></ul>
       </div>
     </div>
+      <?php if (get_option('mainlib_magellan_map_below_results') == 1) { ?>
+          <div id="wpsl-gmap" class="wpsl-gmap-canvas"></div>
+      <?php } ?>
   </div>
 
 <?php
