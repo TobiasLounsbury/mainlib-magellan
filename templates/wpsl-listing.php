@@ -65,6 +65,9 @@ $defaultIcon = get_option('mainlib_magellan_default_icon');
 
         <div class="library-details">
             <div >
+                <% if ( !is_currently_open ) { %>
+                    <?php echo get_option('mainlib_magellan_is_currently_closed_text'); ?>
+                <% } %>
                 <span class="library-listing-distance"><%= distance %> <?php echo esc_html( wpsl_get_distance_unit() ); ?></span>
                 <span class="wpsl-street"><%= address %></span>
                 <% if ( address2 ) { %>
