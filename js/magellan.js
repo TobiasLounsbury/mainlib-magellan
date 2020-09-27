@@ -42,6 +42,12 @@
   //title on the individual Library view page
   $(".wpsl-locations-details").before( $(".post-item-single .library-services") );
 
+  if (Magellan.settings.map_below_results == "1") {
+    $(".wpsl-opening-hours").after($("#wpsl-base-gmap_0"));
+  }
+
+
+
   //Handle the list of Library Services interface
   $("#wpsl-category-list.wpsl-dropdown-magellan").modalSelect();
 

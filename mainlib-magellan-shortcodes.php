@@ -31,7 +31,7 @@ function mainlib_magellan_all_library_services_shortcode() {
  */
 function mainlib_magellan_library_services_shortcode($attr = array()) {
 
-  global $wpsl_settings, $post;
+  global $post;
 
   $attr = ($attr) ? $attr: array();
 
@@ -50,6 +50,8 @@ function mainlib_magellan_library_services_shortcode($attr = array()) {
   //Make sure we have the proper css included
   wp_enqueue_style("magellan", plugin_dir_url(__FILE__)."/css/magellan.css");
   wp_enqueue_script("magellan", plugin_dir_url(__FILE__)."js/magellan.js", array('jquery'));
+  $settings = json_encode(["map_below_results" => get_option("mainlib_magellan_map_below_results")]);
+  wp_add_inline_script("magellan", "window.Magellan = window.Magellan || {}; window.Magellan.settings = $settings;", 'before');
 
   //Start output buffering
   ob_start();
