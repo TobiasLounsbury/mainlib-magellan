@@ -31,7 +31,7 @@ require_once("mainlib-magellan-wpsl-filters.php");
 require_once("mainlib-magellan-utils.php");
 
 //Define the current version number
-define( 'MAINLIB_MAGELLAN_VERSION', '1.0.0' );
+define( 'MAINLIB_MAGELLAN_VERSION', '1.0.1' );
 
 //Plugin Activation Hook
 register_activation_hook( __FILE__, 'mainlib_magellan_activate' );
