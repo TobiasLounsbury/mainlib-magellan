@@ -201,6 +201,9 @@ function mainlib_magellan_hook_admin_init() {
     add_option( 'mainlib_magellan_show_default_services_in_search', "1");
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_show_default_services_in_search');
 
+    add_option( 'mainlib_magellan_map_below_results', "1");
+    register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_map_below_results');
+
     add_option( 'mainlib_magellan_services_radius', '30');
     register_setting( 'mainlib_magellan_options_group', 'mainlib_magellan_services_radius');
 

@@ -73,6 +73,10 @@
                         <label for="mainlib_magellan_hide_create_services"><strong>Disable Add New Service:</strong></label>
                         <input type="checkbox" id="mainlib_magellan_hide_create_services" name="mainlib_magellan_hide_create_services" value="1" <?php echo (get_option('mainlib_magellan_hide_create_services') == 1) ? "checked" : ""; ?> />
                     </p>
+                    <p>
+                        <label for="mainlib_magellan_map_below_results"><strong>Place the Map below the Results:</strong></label>
+                        <input type="checkbox" id="mainlib_magellan_map_below_results" name="mainlib_magellan_map_below_results" value="1" <?php echo (get_option('mainlib_magellan_map_below_results') == 1) ? "checked" : ""; ?> />
+                    </p>
 
                     <hr>
 
