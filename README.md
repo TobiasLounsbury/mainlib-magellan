@@ -18,7 +18,8 @@ Used to make sure the version of FontAwesome being included is up to date. FontA
 Used to reorganize the Display Order (term_order) of the Library Services taxonomy
 1. [WPSL-Coauthors](https://github.com/TobiasLounsbury/wpsl-coauthors "wpsl-coauthors GitHub repository") - 
 Wordpress Plugin that creates a new user role called `Store Locator: Co-Author` with extremely limited permissions tailored to editing a single Store Location location on which they are co-author. Used to Allow individual library employees to have a unique account and permission to author the metadata for their location while restricting access to the rest of the site. 
-
+1. [WPSL-Expanded-Hours](https://github.com/TobiasLounsbury/wpsl-expanded-hours) - 
+Custom wordpress plugin that adds the custom open/close times to the individual library locations inside store locator.
 
 ## Installation
 * Install and activate all dependencies
